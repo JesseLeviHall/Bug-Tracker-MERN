@@ -27,7 +27,7 @@ export default () => {
   return (
     <div className="container-fluid loginBG">
       <div className="row" id="head">
-        <h1 className="col">Bug Chart</h1>
+        <h1 className="col">Bug Track Dashboard</h1>
         <p className="col">Virtual bug tracker for managing website issues</p>
       </div>
       <div className="login-panel">
