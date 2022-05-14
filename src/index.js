@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-
 //reducers
 import authReducer from "./Controllers/Redux/authSlice";
 import bugReducer from "./Controllers/Redux/bugSlice";
@@ -13,7 +13,7 @@ import userReducer from "./Controllers/Redux/userSlice";
 //redux configure
 const reducer = combineReducers({
   auth: authReducer,
-  bug: bugReducer,
+  bugs: bugReducer,
   user: userReducer,
 });
 

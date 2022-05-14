@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Login from "./Views/Login/login";
-import ViewBugs from "./Views/Pages/viewBugs";
+import ViewBugPage from "./Views/Pages/viewBugs";
 import { BrowserRouter as Router } from "react-router-dom";
 import SideBar from "./Views/SIdebar/sideBar";
 
 function App() {
+  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
   const { auth } = useSelector((state) => state);
   return (
     <Router>
@@ -13,8 +15,7 @@ function App() {
         <Login />
       ) : (
         <div>
-          <SideBar />
-          <ViewBugs />
+          <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         </div>
       )}
     </Router>

@@ -4,14 +4,13 @@
 #root{
   --font-family: 'Manrope',
   sans-serif;
-  margin-left: 20vw;
   --prime-color: #DDF3F5
   color: black; 
   --card-color: linear-gradient(89.97deg, #f2eef7 1.84%, #ffd891 102.67%);
 }
 
 button{
-  background: #fd995c;
+  background: #ffd891;
   border-radius: 5px;
   padding: 5px 20px;
   color: white;
@@ -25,11 +24,4 @@ button:hover{
   background:linear-gradient(89.97deg, #f2eef7 1.84%, #ffd891 102.67%) ;
 }
 
-.page-container{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  grid-column: 2;
-}
 

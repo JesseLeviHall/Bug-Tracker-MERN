@@ -1,42 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NavItem, NavLink, Nav, Button } from "reactstrap";
+import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../Controllers/Redux/authSlice";
-import "./sidebar.css";
+//import "./sidebar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faNetworkWired,
+  faWrench,
+  faMapMarkedAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
-export default () => {
+export default ({ isOpen, toggle }) => {
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
   function SignOut() {
     dispatch(signOut);
   }
   return (
-    <div className="sidebar">
-      <Link className="nav-link" to="/">
-        <h1 className="brand">Bug Tracker</h1>
-      </Link>
-      <ul>
-        <li>
-          <Link className="nav-link" to={"/"}>
+    <div className="container-md">
+      <h1 className="m-5">Bug Tracer</h1>
+      <Nav tabs>
+        <NavItem>
+          <NavLink href="/">
+            <FontAwesomeIcon icon={faNetworkWired} className="mr-2" />
             Dashboard
-          </Link>
-        </li>
-        <li>
-          <Link className="nav-link" to={"/viewbugs"}>
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="ms-2" href="/viewbugs">
+            <FontAwesomeIcon className="mr-2" icon={faMapMarkedAlt} />
             View Bugs
-          </Link>
-        </li>
+          </NavLink>
+        </NavItem>
         {auth.admin && (
-          <li>
-            <Link className="nav-link" to={"/create"}>
+          <NavItem>
+            <NavLink className="nav-link" to={"/create"}>
+              <FontAwesomeIcon icon={faWrench} className="mr-2" />
               Create Bug
-            </Link>
-          </li>
+            </NavLink>
+          </NavItem>
         )}
-      </ul>
-      <button onClick={SignOut} className="nav-link logout">
-        Log out
-      </button>
+      </Nav>
+      <Button color="info" onClick={SignOut}>
+        Sign Out
+      </Button>
     </div>
   );
 };
