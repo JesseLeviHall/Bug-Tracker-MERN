@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { NavItem, NavLink, Nav, Button } from "reactstrap";
-import classNames from "classnames";
+
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../Controllers/Redux/authSlice";
 //import "./sidebar.css";
@@ -23,20 +23,21 @@ export default ({ isOpen, toggle }) => {
       <h1 className="m-5">Bug Tracer</h1>
       <Nav tabs>
         <NavItem>
-          <NavLink href="/">
+          <NavLink tag={Link} to="/">
             <FontAwesomeIcon icon={faNetworkWired} className="mr-2" />
             Dashboard
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="ms-2" href="/viewbugs">
+          <NavLink className="ms-2" tag={Link} to="/viewbugs">
             <FontAwesomeIcon className="mr-2" icon={faMapMarkedAlt} />
             View Bugs
           </NavLink>
         </NavItem>
         {auth.admin && (
           <NavItem>
-            <NavLink className="nav-link" to={"/create"}>
+            <NavLink className="nav-link" tag={Link} to="/create">
+              {" "}
               <FontAwesomeIcon icon={faWrench} className="mr-2" />
               Create Bug
             </NavLink>

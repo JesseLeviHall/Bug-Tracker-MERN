@@ -55,7 +55,7 @@ export default () => {
       <br />
       <Row className="no-gutters justify-content-center">
         <Col sm="6">
-          <Card id="one" classname="sm-4" color="secondary" outline>
+          <Card id="one" className="sm-4" color="secondary" outline>
             <CardBody>
               <CardTitle className="text-center" tag="h1">
                 Bug Tracker
