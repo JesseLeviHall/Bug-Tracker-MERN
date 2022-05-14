@@ -43,7 +43,7 @@ export default ({ isOpen, toggle }) => {
           </NavItem>
         )}
       </Nav>
-      <Button color="info" onClick={SignOut}>
+      <Button className="m-5" color="info" onClick={SignOut}>
         Sign Out
       </Button>
     </div>
