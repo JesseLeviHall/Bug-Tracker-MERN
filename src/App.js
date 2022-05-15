@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Login from "./Views/Login/login";
+import Login from "./Views/Pages/Login/login";
 import ViewBugPage from "./Views/Pages/viewBugs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from "./Views/SIdebar/sideBar";

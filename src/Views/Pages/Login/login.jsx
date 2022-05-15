@@ -17,7 +17,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { signIn } from "../../Controllers/Redux/authSlice";
+import { signIn } from "../../../Controllers/Redux/authSlice";
 import "./login.css";
 
 export default () => {
