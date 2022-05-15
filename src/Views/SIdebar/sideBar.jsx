@@ -24,22 +24,21 @@ export default ({ isOpen, toggle }) => {
       <Nav tabs>
         <NavItem>
           <NavLink tag={Link} to="/">
-            <FontAwesomeIcon icon={faNetworkWired} className="mr-2" />
-            Dashboard
+            <FontAwesomeIcon icon={faNetworkWired} className="mr-2" />{" "}
+            {"  Dashboard"}
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink className="ms-2" tag={Link} to="/viewbugs">
-            <FontAwesomeIcon className="mr-2" icon={faMapMarkedAlt} />
-            View Bugs
+            <FontAwesomeIcon icon={faMapMarkedAlt} />
+            {"  View Bugs"}
           </NavLink>
         </NavItem>
         {auth.admin && (
           <NavItem>
             <NavLink className="nav-link" tag={Link} to="/create">
-              {" "}
-              <FontAwesomeIcon icon={faWrench} className="mr-2" />
-              Create Bug
+              <FontAwesomeIcon icon={faWrench} />
+              {" Create Bug"}
             </NavLink>
           </NavItem>
         )}
