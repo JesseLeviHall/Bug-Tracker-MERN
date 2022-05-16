@@ -10,7 +10,7 @@ export default (props) => {
   const bug = new BugModel(props.bug);
   return (
     <div className="container">
-      <Button onClick={props.clicked} className="close-button">
+      <Button close onClick={props.clicked}>
         Close
       </Button>
       <h1>{bug.name}</h1>

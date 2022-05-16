@@ -16,6 +16,7 @@ import {
   Input,
   Row,
   Col,
+  FormFeedback,
 } from "reactstrap";
 import { signIn } from "../../../Controllers/Redux/authSlice";
 import "./login.css";
@@ -76,6 +77,7 @@ export default () => {
                     placeholder="Name"
                     onChange={inputchanged}
                     value={formInput.name}></Input>
+                  <FormFeedback>Something</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <Input
@@ -85,6 +87,7 @@ export default () => {
                     placeholder="Password"
                     onChange={inputchanged}
                     value={formInput.password}></Input>
+                  <FormFeedback>Something</FormFeedback>
                 </FormGroup>
                 <Input type="checkbox" className="custom-control-input" />
                 <Label
