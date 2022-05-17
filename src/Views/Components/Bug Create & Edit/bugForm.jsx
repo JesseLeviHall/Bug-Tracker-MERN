@@ -13,6 +13,7 @@ export default (props) => {
 
   return (
     <div className="container-sm">
+      {props.title == "Edit Bug" && <Button close onClick={props.close} />}
       <h1 className="form-title mb-4 mt-5">{props.title}</h1>
       <Form>
         <FormGroup className="justify-content-center">

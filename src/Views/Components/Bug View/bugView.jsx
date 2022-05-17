@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ViewSection from "./component/bugViewSection";
 import BugModel from "../../../Models/bugModel";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { markComplete } from "../../../Controllers/Redux/bugSlice";
 import EditPanel from "../edit delete/editPanel";
+import EditBug from "../Bug Create & Edit/bugForm";
 
 export default (props) => {
   const dispatch = useDispatch();
   const bug = new BugModel(props.bug);
 
-  function editClicked() {}
+  const [displayEdit, setDisplayEdit] = useState(false);
+
+  function editClicked() {
+    setDisplayEdit(!displayEdit);
+  }
 
   function deleteClicked() {}
 
@@ -33,6 +38,9 @@ export default (props) => {
         }}>
         Mark Complete
       </Button>
+      {displayEdit && (
+        <EditBug close={editClicked} title="Edit Bug" bug={bug} />
+      )}
     </div>
   );
 };
