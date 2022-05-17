@@ -4,15 +4,22 @@ import BugModel from "../../../Models/bugModel";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { markComplete } from "../../../Controllers/Redux/bugSlice";
+import EditPanel from "../edit delete/editPanel";
 
 export default (props) => {
   const dispatch = useDispatch();
   const bug = new BugModel(props.bug);
+
+  function editClicked() {}
+
+  function deleteClicked() {}
+
   return (
     <div className="container">
       <Button close onClick={props.clicked}>
         Close
       </Button>
+      <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} />
       <h1>{bug.name}</h1>
       <ViewSection title="Details" info={bug.details} />
       <ViewSection title="Steps" info={bug.steps} />
