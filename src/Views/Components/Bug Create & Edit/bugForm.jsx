@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
+import BugModel from "../../../Models/bugModel";
 
 export default (props) => {
+  const [createBug, setCreateBug] = useState(new BugModel(props.bug));
+  function inputChanged(e) {
+    setCreateBug({
+      ...createBug,
+      [e.target.name]: e.target.value,
+    });
+  }
+
   return (
     <div className="container-sm">
       <h1 className="form-title mb-4 mt-5">{props.title}</h1>
@@ -9,13 +18,21 @@ export default (props) => {
         <FormGroup className="justify-content-center">
           <Label for="Name">Name:</Label>
           <Col sm={9}>
-            <Input name="name" placeholder="Bug Name" required />
+            <Input
+              value={createBug.name}
+              onChange={inputChanged}
+              name="name"
+              placeholder="Bug Name"
+              required
+            />
           </Col>
         </FormGroup>
         <FormGroup className="sm-ms-4">
           <Label for="Details">Details:</Label>
           <Col sm={9}>
             <Input
+              value={createBug.details}
+              onChange={inputChanged}
               required
               id="details"
               name="details"
@@ -28,6 +45,8 @@ export default (props) => {
           <Label for="Steps">Steps:</Label>
           <Col sm={9}>
             <Input
+              value={createBug.steps}
+              onChange={inputChanged}
               required
               id="steps"
               name="steps"
@@ -41,7 +60,13 @@ export default (props) => {
             Priority:
           </Label>
           <Col sm={9}>
-            <Input required id="priority" name="priority" type="select">
+            <Input
+              value={createBug.priority}
+              onChange={inputChanged}
+              required
+              id="priority"
+              name="priority"
+              type="select">
               <option value="1">High</option>
               <option value="2">Moderate</option>
               <option value="3">Low</option>
@@ -53,7 +78,13 @@ export default (props) => {
             Assigned:
           </Label>
           <Col sm={9}>
-            <Input required id="assigned" name="assigned" type="select">
+            <Input
+              value={createBug.assigned}
+              onChange={inputChanged}
+              required
+              id="assigned"
+              name="assigned"
+              type="select">
               <option value="1">User1</option>
               <option value="2">User2</option>
               <option value="3">User3</option>
@@ -64,6 +95,8 @@ export default (props) => {
           <Label for="Version">Application Version:</Label>
           <Col sm={9}>
             <Input
+              value={createBug.version}
+              onChange={inputChanged}
               id="version"
               name="version"
               placeholder="What Version?"></Input>
