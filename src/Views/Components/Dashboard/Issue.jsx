@@ -13,7 +13,7 @@ export default (props) => {
             <p>Total: {props.count}</p>
             <p>Priority: {level}</p>
           </CardText>
-          <Button>Button</Button>
+          <Button onClick={props.clicked}>View</Button>
         </Card>
       </div>
     </div>
