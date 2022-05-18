@@ -1,1 +1,1 @@
-# Snag-Chart
+# Mern Stack Bug Tracker
