@@ -8,4 +8,4 @@ const schema = mongoose.Schema({
 
 const model = mongoose.model("User", schema);
 
-mododule.exports = model;
+module.exports = model;
