@@ -3,7 +3,7 @@ import ViewSection from "./component/bugViewSection";
 import BugModel from "../../../Models/bugModel";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
-import { markComplete } from "../../../Controllers/Redux/bugSlice";
+import { markComplete } from "../../../Controllers/Reducers/bugSlice";
 import EditPanel from "../edit delete/EditPanel";
 import EditBug from "../Bug Create & Edit/bugForm";
 

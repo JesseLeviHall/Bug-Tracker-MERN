@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { NavItem, NavLink, Nav, Button, Col } from "reactstrap";
 import { faBug } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "../../Controllers/Redux/authSlice";
+import { signOut } from "../../Controllers/Reducers/authSlice";
 import "./sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

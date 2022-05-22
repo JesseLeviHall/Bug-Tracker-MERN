@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Issue from "../../Components/Dashboard/Issue";
-import { getBugs } from "../../../Controllers/Redux/bugSlice";
+import { getBugs } from "../../../Controllers/Reducers/bugSlice";
 
 export default () => {
   const dispatch = useDispatch();

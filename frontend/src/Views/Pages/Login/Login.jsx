@@ -18,7 +18,7 @@ import {
   Col,
   FormFeedback,
 } from "reactstrap";
-import { signIn } from "../../../Controllers/Redux/authSlice";
+import { signIn } from "../../../Controllers/Reducers/authSlice";
 import "./login.css";
 
 export default () => {
