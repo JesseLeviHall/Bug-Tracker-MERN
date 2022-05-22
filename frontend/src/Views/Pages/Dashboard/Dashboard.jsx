@@ -5,9 +5,9 @@ import { Row, Col } from "reactstrap";
 import Issue from "../../Components/Dashboard/Issue";
 import { getBugs } from "../../../Controllers/Reducers/bugSlice";
 
-export default () => {
+export default Dashboard = () => {
   const dispatch = useDispatch();
-  const bugs = useSelector((state) => state.bugs);
+  const { entities, loading } = useSelector((state) => state.bugs);
   const browserHistory = useHistory();
 
   let highCount = 0;
@@ -32,6 +32,8 @@ export default () => {
   useEffect(() => {
     dispatch(getBugs());
   }, [bugs == undefined]);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="container-sm">
