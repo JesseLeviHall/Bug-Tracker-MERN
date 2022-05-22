@@ -1,6 +1,6 @@
 const { Error } = require("mongoose");
 const { post } = require("request");
-const userModel = require("../../Model/userModel");
+const userModel = require("../Model/userModel");
 
 const route = require("express").Router();
 

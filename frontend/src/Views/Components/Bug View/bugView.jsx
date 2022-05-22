@@ -4,10 +4,10 @@ import BugModel from "../../../Models/bugModel";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { markComplete } from "../../../Controllers/Redux/bugSlice";
-import EditPanel from "../edit delete/editPanel";
+import EditPanel from "../edit delete/EditPanel";
 import EditBug from "../Bug Create & Edit/bugForm";
 
-export default (props) => {
+export default BugView = (props) => {
   const dispatch = useDispatch();
   const bug = new BugModel(props.bug);
 

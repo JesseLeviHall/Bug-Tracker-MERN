@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import BugModel from "../../../Models/bugModel";
 
-export default (props) => {
+export default bugForm = (props) => {
   const [createBug, setCreateBug] = useState(new BugModel(props.bug));
   function inputChanged(e) {
     setCreateBug({

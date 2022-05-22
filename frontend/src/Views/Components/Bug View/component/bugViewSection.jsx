@@ -1,6 +1,6 @@
 import React from "react";
 
-export default (props) => {
+export default bugViewSection = (props) => {
   return (
     <div>
       <h2>{props.title}</h2>

@@ -1,8 +1,8 @@
 import React from "react";
 import Priority from "../../../Controllers/priorityController";
-import { Card, Row, Col, CardTitle, CardText, Button } from "reactstrap";
+import { Card, CardTitle, CardText, Button } from "reactstrap";
 
-export default (props) => {
+export default Issue = (props) => {
   const { level, color } = Priority(props.priority);
   return (
     <div className="container-sm">

@@ -24,7 +24,7 @@ function App() {
               {" "}
               <ViewBugPage />
             </Route>
-            <Route path="/create">
+            <Route path="/createBug">
               <CreateBug title={"Create Bug"} />
             </Route>
           </Switch>
