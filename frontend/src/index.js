@@ -6,9 +6,9 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 //reducers
-import authReducer from "./Controllers/Redux/authSlice";
-import bugReducer from "./Controllers/Redux/bugSlice";
-import userReducer from "./Controllers/Redux/userSlice";
+import authReducer from "./Controllers/Reducers/authSlice.js";
+import bugReducer from "./Controllers/Reducers/bugSlice.js";
+import userReducer from "./Controllers/Reducers/userSlice.js";
 
 //redux configure
 const reducer = combineReducers({

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
-import Issue from "../../Components/Dashboard/Issue";
-import { getBugs } from "../../../Controllers/Reducers/bugSlice";
+import Issue from "../../Components/DashboardItem/Issue";
+import { fetchBugs } from "../../../Controllers/Reducers/bugSlice";
 
-export default Dashboard = () => {
+export default function Dashboard() {
   const dispatch = useDispatch();
   const { entities, loading } = useSelector((state) => state.bugs);
   const browserHistory = useHistory();
@@ -30,8 +30,8 @@ export default Dashboard = () => {
   }
 
   useEffect(() => {
-    dispatch(getBugs());
-  }, [bugs == undefined]);
+    dispatch(fetchBugs());
+  }, [bugs]);
 
   if (loading) return <p>Loading...</p>;
 
@@ -50,4 +50,4 @@ export default Dashboard = () => {
       </Row>
     </div>
   );
-};
+}

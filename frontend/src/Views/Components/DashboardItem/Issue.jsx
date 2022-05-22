@@ -2,7 +2,7 @@ import React from "react";
 import Priority from "../../../Controllers/priorityController";
 import { Card, CardTitle, CardText, Button } from "reactstrap";
 
-export default Issue = (props) => {
+export default function Issue(props) {
   const { level, color } = Priority(props.priority);
   return (
     <div className="container-sm">
@@ -18,4 +18,4 @@ export default Issue = (props) => {
       </div>
     </div>
   );
-};
+}

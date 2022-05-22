@@ -4,7 +4,7 @@ const bugSchema = mongoose.Schema({
   name: String,
   detail: String,
   steps: String,
-  version: String,
+  webpage: String,
   priority: Number,
   assigned: String,
   creator: String,

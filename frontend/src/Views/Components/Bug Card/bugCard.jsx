@@ -3,7 +3,7 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 import priorityController from "../../../Controllers/priorityController";
 import "./bugcard.css";
 
-export default bugCard = (props) => {
+export default function bugCard(props) {
   const { name, priority, version } = props.bug;
   const { level, color } = priorityController(priority);
   function Clicked() {
@@ -16,4 +16,4 @@ export default bugCard = (props) => {
       <h5 className="version">{version}</h5>
     </Card>
   );
-};
+}

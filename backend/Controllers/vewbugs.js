@@ -19,3 +19,13 @@ export const createBug = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+export const deleteBug = async (req, res) => {
+  const bug = req.body;
+  try {
+    await bug.delete();
+    res.status(200).json(bug);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
