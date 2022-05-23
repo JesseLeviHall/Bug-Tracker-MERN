@@ -1,14 +1,23 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import * as api from "../../api/index.js";
 
-const getBugs = createAsyncThunk("viewbugs/getBugs", async (thunkAPI) => {
-  const { data } = await api.fetchBugs();
-  return data;
+const initialState = {
+  bugs: [],
+  status: "idle",
+  error: null,
+};
+
+export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
+  try {
+    const response = await api.fetchBugs();
+    return [...response.data];
+  } catch (err) {
+    return err.message;
+  }
 });
 
 const addBug = createAsyncThunk(
-  "bugs/addBug",
+  "viewbugs/addBug",
   async (add, { rejectWithValue }) => {
     try {
       const response = await api.createBug();
