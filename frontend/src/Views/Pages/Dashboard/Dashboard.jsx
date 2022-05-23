@@ -3,17 +3,19 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Issue from "../../Components/DashboardItem/Issue";
-import { fetchBugs } from "../../../Controllers/Reducers/bugSlice";
+import { getBugs } from "../../../Controllers/Reducers/bugSlice";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
   const { entities, loading } = useSelector((state) => state.bugs);
   const browserHistory = useHistory();
 
+  console.log(entities);
+
   let highCount = 0;
   let midCount = 0;
   let lowCount = 0;
-  if (bugs != undefined) {
+  if (entities !== undefined) {
     highCount = filterBugs(1);
     midCount = filterBugs(2);
     lowCount = filterBugs(3);
@@ -24,16 +26,18 @@ export default function Dashboard() {
   }
 
   function filterBugs(priority) {
-    return bugs.filter((bug) => {
-      return bug.priority == priority;
+    return entities.filter((bug) => {
+      return bug.priority === priority;
     });
   }
 
   useEffect(() => {
     dispatch(fetchBugs());
-  }, [bugs]);
+  }, [dispatch, entities]);
 
   if (loading) return <p>Loading...</p>;
+
+  console.log(entities);
 
   return (
     <div className="container-sm">

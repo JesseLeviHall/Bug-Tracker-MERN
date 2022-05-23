@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 import * as api from "../../api/index.js";
 
-const getBugs = createAsyncThunk("bugs/getBugs", async (thunkAPI) => {
-  try {
-    const response = await api.fetchBugs();
-  } catch (error) {
-    console.log(error.message);
-  }
+const getBugs = createAsyncThunk("viewbugs/getBugs", async (thunkAPI) => {
+  const { data } = await api.fetchBugs();
+  return data;
 });
 
 const addBug = createAsyncThunk(
@@ -24,11 +22,7 @@ const bugSlice = createSlice({
   name: "bug",
   initialState: { entities: [], loading: false },
   reducers: {
-    fetchBugs: (state) => {},
-    createBug: (state, action) => {},
-    updateBugs: (state, action) => {},
-    markComplete: (state, action) => {},
-    deleteBug: (state, action) => {},
+    getAll(state, action) {},
   },
   extraReducers: {
     [getBugs.pending]: (state) => {
@@ -55,7 +49,5 @@ const bugSlice = createSlice({
   },
 });
 
+export const { getAll } = bugSlice.actions;
 export default bugSlice.reducer;
-
-export const { fetchBugs, createBug, updateBugs, markComplete, deleteBug } =
-  bugSlice.actions;

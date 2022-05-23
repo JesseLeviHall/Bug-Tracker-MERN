@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBugs } from "../../Controllers/Reducers/bugSlice";
+import { getAll } from "../../Controllers/Reducers/bugSlice.js";
 import BugCard from "../Components/Bug Card/bugCard";
 
-export default () => {
+export default function ViewBugs() {
   const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
     name: "",
     isDisplayed: false,
   });
   const dispatch = useDispatch();
-  const { bugs } = useSelector((state) => state);
+  const { entities, loading } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(fetchBugs());
-  }, [bugs.length < 1]);
+    dispatch(getAll());
+  }, []);
 
   function BugClicked(name) {
     SET_DISPLAY_BUG({
@@ -23,17 +23,17 @@ export default () => {
   }
   return (
     <div className="page-container">
-      {bugs.map((bug, key) => {
+      {entities.map((bug, key) => {
         <BugCard key={key} bug={bug} clicked={BugClicked} />;
       })}
       {DISPLAY_BUG.isDisplayed && (
         <bugView
           clicked={BugClicked}
-          bug={bugs.filter((bug) => {
+          bug={entities.filter((bug) => {
             return bug.name == DISPLAY_BUG.name;
           })}
         />
       )}
     </div>
   );
-};
+}
