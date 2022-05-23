@@ -16,11 +16,12 @@ export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
   }
 });
 
-const addBug = createAsyncThunk(
+export const addBug = createAsyncThunk(
   "viewbugs/addBug",
-  async (add, { rejectWithValue }) => {
+  async (initialPost) => {
     try {
-      const response = await api.createBug();
+      const response = await api.createBug(initialPost);
+      return response.data;
     } catch (err) {
       return rejectWithValue("Opps there seems to be an error");
     }
@@ -28,35 +29,54 @@ const addBug = createAsyncThunk(
 );
 
 const bugSlice = createSlice({
-  name: "bug",
-  initialState: { entities: [], loading: false },
+  name: "bugs",
+  initialState,
   reducers: {
-    getAll(state, action) {},
+    bugAdded: {
+      reducer(state, action) {
+        state.bugs.push(action.payload);
+      },
+      prepare(name) {
+        return {
+          payload: {
+            id: nanoid(),
+            name,
+            detail,
+            steps,
+            webpage,
+            priority,
+            assigned,
+            creator,
+            time,
+          },
+        };
+      },
+    },
   },
-  extraReducers: {
-    [getBugs.pending]: (state) => {
-      state.loading = true;
-    },
-    [getBugs.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.entities = payload;
-    },
-    [getBugs.rejected]: (state) => {
-      state.loading = false;
-    },
-    [addBug.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [addBug.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.entities = payload;
-    },
-    [addBug.rejected]: (state, action) => {
-      state.loading = false;
-      console.log(action.payload);
-    },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchBugs.pending, (state, action) => {
+        state.status = "loading";
+        state.bugs = state.bugs.concat(loadedBugs);
+      })
+      .addCase(fetchBugs.fulfilled, (state, action) => {
+        state.status = "succeeded";
+      })
+      .addCase(fetchBugs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(addBug.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.bugs.push(action.payload);
+      });
   },
 });
 
-export const { getAll } = bugSlice.actions;
+export const selectAllBugs = (state) => state.bugs.bugs;
+export const getBugsStatus = (state) => state.bugs.status;
+export const getBugsError = (state) => state.bugs.error;
+
+export const { bugAdded } = bugSlice.actions;
+
 export default bugSlice.reducer;
