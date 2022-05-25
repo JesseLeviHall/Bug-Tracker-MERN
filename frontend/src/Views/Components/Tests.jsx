@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchBugs,
   getBugsError,
   getBugsStatus,
   selectAllBugs,
@@ -16,19 +17,22 @@ export default function Home() {
   useEffect(() => {
     if (bugStatus === "idle") {
     }
-    dispatch(getAll());
-  }, []);
+    dispatch(fetchBugs());
+  }, [bugStatus, dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-
-  console.log(entities);
+  let content;
+  if (bugStatus === "loading") {
+    content = <p> Loading...</p>;
+  } else if (bugStatus === "succeeded") {
+    content = bugs.map((bug) => <p key={bug._id}>{bug._id}</p>);
+  } else if (bugStatus === "failed") {
+    content = <p>{error}</p>;
+  }
 
   return (
     <div>
       <h2>These are the bugs</h2>
-      {entities.map((bug) => (
-        <p key={bug.id}>{bug.name}</p>
-      ))}
+      {content}
     </div>
   );
 }

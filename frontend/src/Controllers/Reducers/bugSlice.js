@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../../api/index.js";
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
 export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
   try {
     const response = await api.fetchBugs();
-    return [...response.data];
+    console.log(response.request.response);
+    return response.request.response;
   } catch (err) {
     return err.message;
   }
@@ -23,7 +24,7 @@ export const addBug = createAsyncThunk(
       const response = await api.createBug(initialPost);
       return response.data;
     } catch (err) {
-      return rejectWithValue("Opps there seems to be an error");
+      return err.message;
     }
   }
 );
@@ -36,39 +37,20 @@ const bugSlice = createSlice({
       reducer(state, action) {
         state.bugs.push(action.payload);
       },
-      prepare(name) {
-        return {
-          payload: {
-            id: nanoid(),
-            name,
-            detail,
-            steps,
-            webpage,
-            priority,
-            assigned,
-            creator,
-            time,
-          },
-        };
-      },
     },
   },
   extraReducers(builder) {
     builder
       .addCase(fetchBugs.pending, (state, action) => {
         state.status = "loading";
-        state.bugs = state.bugs.concat(loadedBugs);
       })
       .addCase(fetchBugs.fulfilled, (state, action) => {
         state.status = "succeeded";
+        state.bugs = action.payload;
       })
       .addCase(fetchBugs.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      })
-      .addCase(addBug.fulfilled, (state, action) => {
-        console.log(action.payload);
-        state.bugs.push(action.payload);
       });
   },
 });

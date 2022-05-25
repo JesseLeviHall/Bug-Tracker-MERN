@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAll } from "../../Controllers/Reducers/bugSlice.js";
+import { fetchBugs } from "../../Controllers/Reducers/bugSlice.js";
 import BugCard from "../Components/Bug Card/bugCard";
 
 export default function ViewBugs() {
@@ -12,7 +12,7 @@ export default function ViewBugs() {
   const { entities, loading } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getAll());
+    dispatch(fetchBugs());
   }, []);
 
   function BugClicked(name) {
