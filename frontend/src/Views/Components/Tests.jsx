@@ -10,7 +10,7 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
 
-  const bugs = useSelector(selectAllBugs);
+  const bugs = useSelector((state) => state.bugs);
   const bugStatus = useSelector(getBugsStatus);
   const error = useSelector(getBugsError);
 

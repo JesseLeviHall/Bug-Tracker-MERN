@@ -1,5 +1,5 @@
 import express from "express";
-import { getBugs, createBug } from "../Controllers/vewbugs.js";
+import { getBugs, createBug } from "../Controllers/viewbugs.js";
 
 const router = express.Router();
 

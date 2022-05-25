@@ -9,9 +9,7 @@ const initialState = {
 
 export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
   try {
-    const response = await api.fetchBugs();
-    console.log(response.request.response);
-    return response.request.response;
+    return await api.fetchBugs();
   } catch (err) {
     return err.message;
   }
@@ -33,11 +31,7 @@ const bugSlice = createSlice({
   name: "bugs",
   initialState,
   reducers: {
-    bugAdded: {
-      reducer(state, action) {
-        state.bugs.push(action.payload);
-      },
-    },
+    reset: (state) => initialState,
   },
   extraReducers(builder) {
     builder
@@ -59,6 +53,6 @@ export const selectAllBugs = (state) => state.bugs.bugs;
 export const getBugsStatus = (state) => state.bugs.status;
 export const getBugsError = (state) => state.bugs.error;
 
-export const { bugAdded } = bugSlice.actions;
+export const { reset } = bugSlice.actions;
 
 export default bugSlice.reducer;
