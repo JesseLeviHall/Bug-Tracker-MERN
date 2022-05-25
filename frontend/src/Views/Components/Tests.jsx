@@ -10,9 +10,10 @@ import {
 export default function Home() {
   const dispatch = useDispatch();
 
-  const bugs = useSelector((state) => state.bugs);
+  const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
   const error = useSelector(getBugsError);
+  console.log(bugs);
 
   useEffect(() => {
     if (bugStatus === "idle") {

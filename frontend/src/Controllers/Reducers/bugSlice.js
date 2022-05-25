@@ -49,7 +49,7 @@ const bugSlice = createSlice({
   },
 });
 
-export const selectAllBugs = (state) => state.bugs.bugs;
+export const selectAllBugs = (state) => state.bugs;
 export const getBugsStatus = (state) => state.bugs.status;
 export const getBugsError = (state) => state.bugs.error;
 
