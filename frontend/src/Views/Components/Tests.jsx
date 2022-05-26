@@ -7,7 +7,7 @@ import {
   selectAllBugs,
 } from "../../Controllers/Reducers/bugSlice";
 
-export default function Home() {
+export default function Tests() {
   const dispatch = useDispatch();
 
   const bugs = useSelector(selectAllBugs);
@@ -17,15 +17,15 @@ export default function Home() {
 
   useEffect(() => {
     if (bugStatus === "idle") {
+      dispatch(fetchBugs());
     }
-    dispatch(fetchBugs());
   }, [bugStatus, dispatch]);
 
   let content;
   if (bugStatus === "loading") {
     content = <p> Loading...</p>;
   } else if (bugStatus === "succeeded") {
-    content = bugs.map((bug) => <p key={bug._id}>{bug._id}</p>);
+    content = bugs.map((bug) => <div key={bug._id}>{bug._id}</div>);
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;
   }

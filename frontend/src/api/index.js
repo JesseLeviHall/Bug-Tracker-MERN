@@ -4,8 +4,7 @@ const url = "http://localhost:3500/viewbugs";
 
 export const fetchBugs = async () => {
   const response = await axios.get(url);
-  console.log(response);
-  return response;
+  return response.data;
 };
 
 export const createBug = (newBug) => axios.post(url, newBug);
