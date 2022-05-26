@@ -23,7 +23,7 @@ export default ({ isOpen, toggle }) => {
       <Col className="text-center mt-5 mb-5 text-nowrap">
         <h1>
           <FontAwesomeIcon icon={faBug} className="pe-4" />
-          Bug Tracer
+          Bug Tracker
         </h1>
       </Col>
       <Nav tabs className="justify-content-center">

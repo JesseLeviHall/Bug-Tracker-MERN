@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBugs } from "../../Controllers/Reducers/bugSlice.js";
+import {
+  fetchBugs,
+  getBugsError,
+  getBugsStatus,
+  selectAllBugs,
+} from "../../Controllers/Reducers/bugSlice";
 import BugCard from "../Components/Bug Card/bugCard";
 
 export default function ViewBugs() {
@@ -8,12 +13,17 @@ export default function ViewBugs() {
     name: "",
     isDisplayed: false,
   });
+
   const dispatch = useDispatch();
-  const { entities, loading } = useSelector((state) => state);
+  const bugs = useSelector(selectAllBugs);
+  const bugStatus = useSelector(getBugsStatus);
+  const error = useSelector(getBugsError);
 
   useEffect(() => {
-    dispatch(fetchBugs());
-  }, []);
+    if (bugStatus === "idle") {
+      dispatch(fetchBugs());
+    }
+  }, [bugStatus, dispatch]);
 
   function BugClicked(name) {
     SET_DISPLAY_BUG({
@@ -23,13 +33,13 @@ export default function ViewBugs() {
   }
   return (
     <div className="page-container">
-      {entities.map((bug, key) => {
+      {bugs.map((bug, key) => {
         <BugCard key={key} bug={bug} clicked={BugClicked} />;
       })}
       {DISPLAY_BUG.isDisplayed && (
         <bugView
           clicked={BugClicked}
-          bug={entities.filter((bug) => {
+          bug={bugs.filter((bug) => {
             return bug.name == DISPLAY_BUG.name;
           })}
         />

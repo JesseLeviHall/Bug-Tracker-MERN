@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from "./Views/SIdebar/sideBar";
 import CreateBug from "./Views/Components/Bug Create & Edit/bugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
-import Tests from "./Views/Components/Tests";
 
 function App() {
   const { auth } = useSelector((state) => state);
@@ -19,7 +18,7 @@ function App() {
           <SideBar />
           <Switch>
             <Route path="/" exact>
-              <Tests />
+              <Dashboard />
             </Route>
             <Route path="/viewbugs">
               {" "}

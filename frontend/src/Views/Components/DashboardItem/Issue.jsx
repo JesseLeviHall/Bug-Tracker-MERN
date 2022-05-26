@@ -8,9 +8,11 @@ export default function Issue(props) {
     <div className="container-sm">
       <div style={{ color: color }}>
         <Card body color="info" inverse>
-          <CardTitle tag="h5">Special Title Treatment</CardTitle>
-          <CardText>
-            Total: {props.count} <br /> Priority: {level}
+          <CardTitle className="text-center" tag="h5">
+            Bugs With Priority {level}
+          </CardTitle>
+          <CardText className="text-center">
+            Active Bugs: {props.count}
           </CardText>
           <Button onClick={props.clicked}>View</Button>
         </Card>
