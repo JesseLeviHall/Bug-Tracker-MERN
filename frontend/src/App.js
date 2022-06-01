@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Login from "./Views/Pages/Login/Login";
 import ViewBugPage from "./Views/Pages/ViewAllBugs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SideBar from "./Views/SIdebar/sideBar";
+import Navigation from "./Views/SIdebar/sideBar";
 import BugForm from "./Views/Components/Bug Create & Edit/BugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 
@@ -15,7 +15,7 @@ function App() {
         <Login />
       ) : (
         <div>
-          <SideBar />
+          <Navigation />
           <Switch>
             <Route path="/" exact>
               <Dashboard />

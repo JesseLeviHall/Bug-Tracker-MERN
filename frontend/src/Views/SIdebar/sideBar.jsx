@@ -12,7 +12,7 @@ import {
   faMapMarkedAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default ({ isOpen, toggle }) => {
+export default function Navigation({ isOpen, toggle }) {
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
   function SignOut() {
@@ -33,20 +33,21 @@ export default ({ isOpen, toggle }) => {
             {"  Dashboard"}
           </NavLink>
         </NavItem>
-        <NavItem className="p-3">
+
+        <NavItem className="py-3">
           <NavLink className="ms-2" tag={Link} to="/viewbugs">
             <FontAwesomeIcon icon={faMapMarkedAlt} />
             {"  View All Bugs"}
           </NavLink>
         </NavItem>
-        {auth.admin && (
-          <NavItem className="p-3">
-            <NavLink className="nav-link" tag={Link} to="/mybugs">
-              <FontAwesomeIcon icon={faWrench} />
-              {" Assigned To Me"}
-            </NavLink>
-          </NavItem>
-        )}
+
+        <NavItem className="py-3">
+          <NavLink className="nav-link" tag={Link} to="/mybugs">
+            <FontAwesomeIcon icon={faWrench} />
+            {" Assigned To Me"}
+          </NavLink>
+        </NavItem>
+
         <NavItem className=" offset-md-1 p-4">
           <Button
             outline
@@ -60,4 +61,4 @@ export default ({ isOpen, toggle }) => {
       </Nav>
     </div>
   );
-};
+}

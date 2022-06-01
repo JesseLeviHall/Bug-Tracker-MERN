@@ -46,7 +46,7 @@ export default function ViewBugs() {
 
   return (
     <div className="container-sm">
-      <h2 className="text-center mt-4">These are all the bugs</h2>
+      <h2 className="text-center mt-5">These are all the bugs</h2>
       <Row>{content}</Row>
     </div>
   );
