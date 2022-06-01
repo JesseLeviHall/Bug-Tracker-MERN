@@ -15,17 +15,21 @@ export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
   }
 });
 
-export const addBug = createAsyncThunk(
-  "viewbugs/addBug",
-  async (initialPost) => {
-    try {
-      const response = await api.createBug(initialPost);
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
+export const addBug = createAsyncThunk("viewbugs/addBug", async (Post) => {
+  try {
+    return await api.createBug(Post);
+  } catch (err) {
+    return err.message;
   }
-);
+});
+
+export const deleteBug = createAsyncThunk("viewbugs/deleteBug", async (id) => {
+  try {
+    return await api.deleteBug(id);
+  } catch (err) {
+    return err.message;
+  }
+});
 
 const bugSlice = createSlice({
   name: "bugs",
@@ -35,7 +39,8 @@ const bugSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchBugs.pending, (state, action) => {
+      //get
+      .addCase(fetchBugs.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchBugs.fulfilled, (state, action) => {
@@ -43,6 +48,30 @@ const bugSlice = createSlice({
         state.bugs = action.payload;
       })
       .addCase(fetchBugs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      //create
+      .addCase(addBug.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addBug.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.bugs.push(action.payload);
+      })
+      .addCase(addBug.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      //delete
+      .addCase(deleteBug.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteBug.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.bugs = state.bugs.filter((bug) => bug._id !== action.payload.id);
+      })
+      .addCase(deleteBug.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

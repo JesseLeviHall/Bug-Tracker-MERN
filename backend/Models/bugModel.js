@@ -8,6 +8,7 @@ const bugSchema = mongoose.Schema({
   priority: Number,
   assigned: String,
   creator: String,
+  complete: Boolean,
   time: {
     type: Date,
     default: new Date().toDateString("en-US"),

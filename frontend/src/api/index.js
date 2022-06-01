@@ -7,8 +7,22 @@ export const fetchBugs = async () => {
   return response.data;
 };
 
-export const createBug = (newBug) => axios.post(url, newBug);
-export const markComplete = (id) => axios.patch(`${url}/${id}/markComplete`);
-export const updateBug = (id, updatedBug) =>
-  axios.patch(`${url}/${id}`, updatedBug);
-export const deleteBug = (id) => axios.delete(`${url}/${id}`);
+export const createBug = async (newBug) => {
+  const response = await axios.post(url, newBug);
+  return response.data;
+};
+
+export const deleteBug = async (id) => {
+  const response = await axios.delete(`${url}/${id}`);
+  return response.data;
+};
+
+export const markComplete = async (id) => {
+  const response = await axios.patch(`${url}/${id}/markComplete`);
+  return response.data;
+};
+
+export const updateBug = async (id, updatedBug) => {
+  const response = await axios.patch(`${url}/${id}`, updatedBug);
+  return response.data;
+};
