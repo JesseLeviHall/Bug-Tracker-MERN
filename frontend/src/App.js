@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
       {!auth.LoggedIn ? (
+        //will change to public
         <Login />
       ) : (
         <div>
