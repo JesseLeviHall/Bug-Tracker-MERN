@@ -1,19 +1,22 @@
 import React from "react";
-import { Card, CardBody, CardTitle } from "reactstrap";
-import priorityController from "../../../Controllers/priorityController";
+import { Col, Card, CardBody, CardTitle, CardText } from "reactstrap";
+import Priority from "../../../Controllers/priorityController";
 import "./bugcard.css";
 
 export default function bugCard(props) {
-  const { name, priority, version } = props.bug;
-  const { level, color } = priorityController(priority);
+  const { level, color } = Priority(props.priority);
   function Clicked() {
-    props.clicked(name);
+    props.clicked(props.bugs.name);
   }
+
   return (
-    <Card onClick={Clicked} style={{ color: color }}>
-      <CardTitle>{name}</CardTitle>
-      <CardBody>{level}</CardBody>
-      <h5>{version}</h5>
-    </Card>
+    <Col className="mt-5" md="4">
+      <Card className="mt-2" onClick={Clicked} style={{ color: color }}>
+        <CardTitle className="mt-2">Name: {props.bugs._id}</CardTitle>
+        <CardBody>
+          <CardText>{level}</CardText>
+        </CardBody>
+      </Card>
+    </Col>
   );
 }

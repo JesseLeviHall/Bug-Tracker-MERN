@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Row } from "reactstrap";
 import {
   fetchBugs,
   getBugsError,
@@ -38,7 +39,7 @@ export default function ViewBugs() {
     content = <p> Loading...</p>;
   } else if (bugStatus === "succeeded") {
     content = bugs.map((bug) => (
-      <BugCard key={bug._id} bug={bug} clicked={BugClicked} />
+      <BugCard key={bug._id} bugs={bugs} clicked={BugClicked} />
     ));
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;
@@ -46,8 +47,9 @@ export default function ViewBugs() {
 
   return (
     <div className="container-sm">
-      <h2>These are the bugs</h2>
-      {content}
+      <h2 className="text-center mt-4">These are all the bugs</h2>
+      <Row>{content}</Row>
+
       {DISPLAY_BUG.isDisplayed && (
         <BugView
           clicked={BugClicked}
