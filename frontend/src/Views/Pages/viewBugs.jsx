@@ -8,6 +8,8 @@ import {
 } from "../../Controllers/Reducers/bugSlice";
 import BugCard from "../Components/Bug Card/bugCard";
 
+//get state from slice in every component?
+
 export default function ViewBugs() {
   const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
     name: "",
