@@ -10,7 +10,7 @@ const bugSchema = mongoose.Schema({
   creator: String,
   time: {
     type: Date,
-    default: new Date().toLocalDateString("en-US"),
+    default: new Date().toDateString("en-US"),
   },
 });
 

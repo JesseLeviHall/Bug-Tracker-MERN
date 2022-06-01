@@ -2,7 +2,7 @@ import React from "react";
 import Priority from "../../../Controllers/priorityController";
 import { Card, CardTitle, CardText, Button } from "reactstrap";
 
-export default function Issue(props) {
+export default function DashboardItem(props) {
   const { level, color } = Priority(props.priority);
   return (
     <Card style={{ color: color }}>

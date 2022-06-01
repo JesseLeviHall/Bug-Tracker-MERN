@@ -7,8 +7,7 @@ import {
   getBugsStatus,
   selectAllBugs,
 } from "../../Controllers/Reducers/bugSlice";
-import BugCard from "../Components/Bug Card/bugCard";
-import BugView from "../Components/Bug View/BugView";
+import BugCard from "../Components/Bug Card/BugCard";
 
 export default function ViewBugs() {
   const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
@@ -49,15 +48,6 @@ export default function ViewBugs() {
     <div className="container-sm">
       <h2 className="text-center mt-4">These are all the bugs</h2>
       <Row>{content}</Row>
-
-      {DISPLAY_BUG.isDisplayed && (
-        <BugView
-          clicked={BugClicked}
-          bug={bugs.filter((bug) => {
-            return bug.name === DISPLAY_BUG.name;
-          })}
-        />
-      )}
     </div>
   );
 }

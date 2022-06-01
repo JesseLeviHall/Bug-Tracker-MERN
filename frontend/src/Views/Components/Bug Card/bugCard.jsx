@@ -1,10 +1,11 @@
 import React from "react";
-import { Col, Card, CardBody, CardTitle, CardText } from "reactstrap";
+import { Col, Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
+import { markComplete } from "../../../Controllers/Reducers/bugSlice";
+import { useDispatch } from "react-redux";
 import Priority from "../../../Controllers/priorityController";
-import "./bugcard.css";
 
 export default function bugCard(props) {
-  const { level, color } = Priority(props.priority);
+  const { color } = Priority(props.priority);
   function Clicked() {
     props.clicked(props.name);
   }
@@ -24,8 +25,15 @@ export default function bugCard(props) {
             Priority: {props.bug.priority} <br />
             Webpage: {props.bug.webpage}
           </CardText>
+          <Button outline color="info" className="ms-3 mt-3" size="sm">
+            Mark Complete
+          </Button>
         </CardBody>
       </Card>
     </Col>
   );
 }
+
+// for button  onClick={() => {
+// dispatch(markComplete());
+//  }}>

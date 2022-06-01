@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
-import Issue from "../../Components/DashboardItem/Issue";
+import DashboardItem from "../../Components/DashboardItem/DashboardItem";
 import {
   fetchBugs,
   getBugsError,
@@ -31,13 +31,25 @@ export default function Dashboard() {
     content = (
       <Row>
         <Col className="mt-5" md="4">
-          <Issue clicked={redirect} priority="1" count={highCount.length} />
+          <DashboardItem
+            clicked={redirect}
+            priority="1"
+            count={highCount.length}
+          />
         </Col>
         <Col className="mt-5" md="4">
-          <Issue clicked={redirect} priority="2" count={midCount.length} />
+          <DashboardItem
+            clicked={redirect}
+            priority="2"
+            count={midCount.length}
+          />
         </Col>
         <Col className="mt-5" md="4">
-          <Issue clicked={redirect} priority="3" count={lowCount.length} />
+          <DashboardItem
+            clicked={redirect}
+            priority="3"
+            count={lowCount.length}
+          />
         </Col>
       </Row>
     );

@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Login from "./Views/Pages/Login/Login";
-import ViewBugPage from "./Views/Pages/viewBugs";
+import ViewBugPage from "./Views/Pages/ViewAllBugs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideBar from "./Views/SIdebar/sideBar";
-import CreateBug from "./Views/Components/Bug Create & Edit/bugForm";
+import BugForm from "./Views/Components/Bug Create & Edit/BugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       {!auth.LoggedIn ? (
-        //will change to public
         <Login />
       ) : (
         <div>
@@ -25,8 +24,8 @@ function App() {
               {" "}
               <ViewBugPage />
             </Route>
-            <Route path="/createBug">
-              <CreateBug title={"Create Bug"} />
+            <Route path="/create">
+              <BugForm title={"Report A Problem"} />
             </Route>
           </Switch>
         </div>
