@@ -41,9 +41,9 @@ export default ({ isOpen, toggle }) => {
         </NavItem>
         {auth.admin && (
           <NavItem className="p-3">
-            <NavLink className="nav-link" tag={Link} to="/create">
+            <NavLink className="nav-link" tag={Link} to="/mybugs">
               <FontAwesomeIcon icon={faWrench} />
-              {" Create Bug"}
+              {" Assigned To Me"}
             </NavLink>
           </NavItem>
         )}
