@@ -23,9 +23,7 @@ export default function BugView(props) {
 
   return (
     <div className="container">
-      <Button close onClick={props.clicked}>
-        Close
-      </Button>
+      <Button close onClick={props.clicked}></Button>
       <EditPanel editClicked={editClicked} deleteClicked={deleteClicked} />
       <h1>{props.bug.name}</h1>
       <ViewSection title="Details" info={props.bug.details} />

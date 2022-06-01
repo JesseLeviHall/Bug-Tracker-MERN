@@ -39,7 +39,7 @@ export default function ViewBugs() {
     content = <p> Loading...</p>;
   } else if (bugStatus === "succeeded") {
     content = bugs.map((bug) => (
-      <BugCard key={bug._id} bugs={bugs} clicked={BugClicked} />
+      <BugCard key={bug._id} bug={bug} clicked={BugClicked} />
     ));
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;

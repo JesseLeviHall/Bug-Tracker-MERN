@@ -36,7 +36,7 @@ export default ({ isOpen, toggle }) => {
         <NavItem className="p-3">
           <NavLink className="ms-2" tag={Link} to="/viewbugs">
             <FontAwesomeIcon icon={faMapMarkedAlt} />
-            {"  View Bugs"}
+            {"  View All Bugs"}
           </NavLink>
         </NavItem>
         {auth.admin && (
