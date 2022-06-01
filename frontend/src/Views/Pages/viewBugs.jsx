@@ -7,8 +7,7 @@ import {
   selectAllBugs,
 } from "../../Controllers/Reducers/bugSlice";
 import BugCard from "../Components/Bug Card/bugCard";
-
-//get state from slice in every component?
+import BugView from "../Components/Bug View/BugView";
 
 export default function ViewBugs() {
   const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
@@ -33,16 +32,27 @@ export default function ViewBugs() {
       name: name,
     });
   }
+
+  let content;
+  if (bugStatus === "loading") {
+    content = <p> Loading...</p>;
+  } else if (bugStatus === "succeeded") {
+    content = bugs.map((bug) => (
+      <BugCard key={bug._id} bug={bug} clicked={BugClicked} />
+    ));
+  } else if (bugStatus === "failed") {
+    content = <p>{error}</p>;
+  }
+
   return (
-    <div className="page-container">
-      {bugs.map((bug, key) => {
-        <BugCard key={key} bug={bug} clicked={BugClicked} />;
-      })}
+    <div className="container-sm">
+      <h2>These are the bugs</h2>
+      {content}
       {DISPLAY_BUG.isDisplayed && (
-        <bugView
+        <BugView
           clicked={BugClicked}
           bug={bugs.filter((bug) => {
-            return bug.name == DISPLAY_BUG.name;
+            return bug.name === DISPLAY_BUG.name;
           })}
         />
       )}

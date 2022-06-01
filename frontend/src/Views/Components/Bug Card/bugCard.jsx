@@ -11,9 +11,9 @@ export default function bugCard(props) {
   }
   return (
     <Card onClick={Clicked} style={{ color: color }}>
-      <CardTitle className="name">{name}</CardTitle>
-      <CardBody className="priority">{level}</CardBody>
-      <h5 className="version">{version}</h5>
+      <CardTitle>{name}</CardTitle>
+      <CardBody>{level}</CardBody>
+      <h5>{version}</h5>
     </Card>
   );
 }
