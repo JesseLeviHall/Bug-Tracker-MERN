@@ -15,9 +15,9 @@ export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
   }
 });
 
-export const addBug = createAsyncThunk("viewbugs/addBug", async (Post) => {
+export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
   try {
-    return await api.createBug(Post);
+    return await api.createBug(newBug);
   } catch (err) {
     return err.message;
   }
@@ -57,6 +57,7 @@ const bugSlice = createSlice({
       })
       .addCase(addBug.fulfilled, (state, action) => {
         state.status = "succeeded";
+        console.log(action.payload);
         state.bugs.push(action.payload);
       })
       .addCase(addBug.rejected, (state, action) => {

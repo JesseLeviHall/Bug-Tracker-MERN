@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import { addBug } from "../../../Controllers/Reducers/bugSlice";
 
-export default function BugForm(props) {
+export default function BugForm() {
   const [createBug, setCreateBug] = useState({});
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
   const dispatch = useDispatch();
 
   const formSubmit = (e) => {
@@ -17,9 +18,8 @@ export default function BugForm(props) {
   };
 
   return (
-    <div className="container-sm">
-      {props.title == "Edit Bug" && <Button close onClick={props.close} />}
-      <h1 className="form-title mb-4 mt-5">{props.title}</h1>
+    <div className="container-sm ">
+      <h1 className="form-title mb-4 mt-5 text-center">Create New Bug</h1>
       <Form onSubmit={formSubmit}>
         <FormGroup className="justify-content-center">
           <Label for="Name">Name:</Label>
@@ -98,20 +98,20 @@ export default function BugForm(props) {
           </Col>
         </FormGroup>
         <FormGroup className="sm-ms-4">
-          <Label for="Version">Application Version:</Label>
+          <Label for="Webpage">Application Version:</Label>
           <Col sm={9}>
             <Input
-              value={createBug.version}
+              value={createBug.webpage}
               onChange={(e) => setCreateBug(e.target.value)}
-              id="version"
-              name="version"
-              placeholder="What Version?"></Input>
+              id="webpage"
+              name="webpage"
+              placeholder="What webpage is this happning on?"></Input>
           </Col>
         </FormGroup>
         <FormGroup className="sm-ms-4">
           <Col xs={10}>
             <Button className="mt-4 mb-5" color="info" type="submit">
-              {props.title}
+              Submit Bug
             </Button>
           </Col>
         </FormGroup>
