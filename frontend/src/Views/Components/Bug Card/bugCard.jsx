@@ -3,6 +3,7 @@ import { Col, Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 import { markComplete } from "../../../Controllers/Reducers/bugSlice";
 import { useDispatch } from "react-redux";
 import Priority from "../../../Controllers/priorityController";
+import { Link } from "react-router-dom";
 
 export default function bugCard(props) {
   const { color } = Priority(props.priority);
@@ -18,7 +19,7 @@ export default function bugCard(props) {
         </CardTitle>
         <CardBody>
           <CardText className="text-left ms-3">
-            Details: {props.bug.detail} <br />
+            Details: {props.bug.details} <br />
             Steps: {props.bug.steps} <br />
             Assigned: {props.bug.assigned} <br />
             Created: {props.bug.time} <br />
@@ -26,7 +27,7 @@ export default function bugCard(props) {
             Webpage: {props.bug.webpage}
           </CardText>
           <Button outline color="info" className="ms-3 mt-3" size="sm">
-            Mark Complete
+            <Link to={`/bug/edit/${props.bug._id}`}>Edit Bug</Link>
           </Button>
         </CardBody>
       </Card>

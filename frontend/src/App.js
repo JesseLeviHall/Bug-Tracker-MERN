@@ -5,6 +5,7 @@ import ViewBugPage from "./Views/Pages/ViewAllBugs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./Views/SIdebar/sideBar";
 import BugForm from "./Views/Components/Bug Create & Edit/BugForm";
+import EditBugForm from "./Views/Components/Bug Create & Edit/EditBugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
               <ViewBugPage />
             </Route>
             <Route path="/create">
-              <BugForm title={"Report A Problem"} />
+              <BugForm />
+            </Route>
+            <Route path="edit/:postId">
+              <EditBugForm />
             </Route>
           </Switch>
         </div>

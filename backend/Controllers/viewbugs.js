@@ -20,6 +20,15 @@ export const createBug = async (req, res) => {
   }
 };
 
+export const updateBug = async (req, res) => {
+  try {
+    const thisBug = await Bugs.findByIdAndUpdate();
+    res.status(200).json(thisBug);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 export const deleteBug = async (req, res) => {
   const bug = req.body;
   try {
