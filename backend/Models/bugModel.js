@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const bugSchema = mongoose.Schema({
   name: String,
-  detail: String,
+  details: String,
   steps: String,
   webpage: String,
   priority: Number,

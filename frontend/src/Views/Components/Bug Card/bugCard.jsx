@@ -14,7 +14,7 @@ export default function bugCard(props) {
     <Col className="mt-5" md="4">
       <Card className="mt-2" onClick={Clicked} style={{ color: color }}>
         <CardTitle className="mt-2 text-center" tag="h5">
-          Bug Name: {props.bug.name}
+          {props.bug.name}
         </CardTitle>
         <CardBody>
           <CardText className="text-left ms-3">

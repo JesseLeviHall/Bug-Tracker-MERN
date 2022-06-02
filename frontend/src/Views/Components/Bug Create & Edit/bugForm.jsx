@@ -4,29 +4,55 @@ import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import { addBug } from "../../../Controllers/Reducers/bugSlice";
 
 export default function BugForm() {
-  const [createBug, setCreateBug] = useState({});
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
   const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const [details, setDetails] = useState("");
+  const [steps, setSteps] = useState("");
+  const [priority, setPriority] = useState("");
+  const [webpage, setWebpage] = useState("");
+
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
+
+  const onNameChanged = (e) => setName(e.target.value);
+  const onDetailsChanged = (e) => setDetails(e.target.value);
+  const onStepsChanged = (e) => setSteps(e.target.value);
+  const onPriorityChanged = (e) => setPriority(e.target.value);
+  const onWebpageChanged = (e) => setWebpage(e.target.value);
+
+  const canSave =
+    [name, details, steps, priority, webpage].every(Boolean) &&
+    addRequestStatus === "idle";
 
   const formSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBug({ createBug }));
-    setCreateBug({
-      ...createBug,
-      [e.target.name]: e.target.value,
-    });
+    if (canSave) {
+      try {
+        setAddRequestStatus("pending");
+        dispatch(addBug({ name, details, steps, priority, webpage })).unwrap();
+        setName("");
+        setDetails("");
+        setSteps("");
+        setPriority("");
+        setWebpage("");
+      } catch (err) {
+        console.error("Failed to save the post", err);
+      } finally {
+        setAddRequestStatus("idle");
+      }
+    }
   };
 
   return (
-    <div className="container-sm ">
+    <div className="container-sm">
       <h1 className="form-title mb-4 mt-5 text-center">Create New Bug</h1>
-      <Form onSubmit={formSubmit}>
-        <FormGroup className="justify-content-center">
-          <Label for="Name">Name:</Label>
+      <Form className="offset-md-2" onSubmit={formSubmit}>
+        <FormGroup>
+          <Label for="Name">Bug Name:</Label>
           <Col sm={9}>
             <Input
-              value={createBug.name}
-              onChange={(e) => setCreateBug(e.target.value)}
+              value={name}
+              onChange={onNameChanged}
               name="name"
               placeholder="Bug Name"
               required
@@ -34,11 +60,11 @@ export default function BugForm() {
           </Col>
         </FormGroup>
         <FormGroup className="sm-ms-4">
-          <Label for="Details">Details:</Label>
+          <Label for="Details">Bug Details:</Label>
           <Col sm={9}>
             <Input
-              value={createBug.details}
-              onChange={(e) => setCreateBug(e.target.value)}
+              value={details}
+              onChange={onDetailsChanged}
               required
               id="details"
               name="details"
@@ -51,8 +77,8 @@ export default function BugForm() {
           <Label for="Steps">Steps:</Label>
           <Col sm={9}>
             <Input
-              value={createBug.steps}
-              onChange={(e) => setCreateBug(e.target.value)}
+              value={steps}
+              onChange={onStepsChanged}
               required
               id="steps"
               name="steps"
@@ -67,42 +93,26 @@ export default function BugForm() {
           </Label>
           <Col sm={9}>
             <Input
-              value={createBug.priority}
-              onChange={(e) => setCreateBug(e.target.value)}
+              value={priority}
+              onChange={onPriorityChanged}
               required
               id="priority"
               name="priority"
               type="select">
+              <option>Select</option>
               <option value="1">High</option>
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </Input>
           </Col>
         </FormGroup>
+
         <FormGroup className="sm-ms-4">
-          <Label sm={2} for="Assigned">
-            Assigned:
-          </Label>
+          <Label for="Webpage">Webpage of Bug:</Label>
           <Col sm={9}>
             <Input
-              value={createBug.assigned}
-              onChange={(e) => setCreateBug(e.target.value)}
-              required
-              id="assigned"
-              name="assigned"
-              type="select">
-              <option value="1">User1</option>
-              <option value="2">User2</option>
-              <option value="3">User3</option>
-            </Input>
-          </Col>
-        </FormGroup>
-        <FormGroup className="sm-ms-4">
-          <Label for="Webpage">Application Version:</Label>
-          <Col sm={9}>
-            <Input
-              value={createBug.webpage}
-              onChange={(e) => setCreateBug(e.target.value)}
+              value={webpage}
+              onChange={onWebpageChanged}
               id="webpage"
               name="webpage"
               placeholder="What webpage is this happning on?"></Input>
@@ -110,7 +120,11 @@ export default function BugForm() {
         </FormGroup>
         <FormGroup className="sm-ms-4">
           <Col xs={10}>
-            <Button className="mt-4 mb-5" color="info" type="submit">
+            <Button
+              className="mt-4 mb-5"
+              color="info"
+              type="submit"
+              disabled={!canSave}>
               Submit Bug
             </Button>
           </Col>
