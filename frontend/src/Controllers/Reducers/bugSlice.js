@@ -23,6 +23,17 @@ export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
   }
 });
 
+export const updateBug = createAsyncThunk(
+  "viewbugs/updateBug",
+  async (editBug) => {
+    try {
+      return await api.updateBug(editBug);
+    } catch (err) {
+      return err.message;
+    }
+  }
+);
+
 export const deleteBug = createAsyncThunk("viewbugs/deleteBug", async (id) => {
   try {
     return await api.deleteBug(id);
@@ -52,29 +63,33 @@ const bugSlice = createSlice({
         state.error = action.error.message;
       })
       //create
-      .addCase(addBug.pending, (state) => {
-        state.status = "loading";
-      })
       .addCase(addBug.fulfilled, (state, action) => {
         state.status = "succeeded";
-        console.log(action.payload);
         state.bugs.push(action.payload);
       })
-      .addCase(addBug.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+
+      //update
+      .addCase(updateBug.fulfilled, (state, action) => {
+        if (!action.payload?.id) {
+          console.log("Update could not be completed");
+          console.log(action.payload);
+          return;
+        }
+        const { id } = action.payload;
+        const bugs = state.bugs.filter((bug) => bug.id !== id);
+        state.bugs = [...bugs, action.payload];
       })
+
       //delete
-      .addCase(deleteBug.pending, (state) => {
-        state.status = "loading";
-      })
       .addCase(deleteBug.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.bugs = state.bugs.filter((bug) => bug._id !== action.payload.id);
-      })
-      .addCase(deleteBug.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        if (!action.payload?.id) {
+          console.log("Could not delete");
+          console.log(action.payload);
+          return;
+        }
+        const { id } = action.payload;
+        const bugs = state.bugs.filter((bug) => bug._id !== id);
+        state.bugs = bugs;
       });
   },
 });
@@ -82,6 +97,8 @@ const bugSlice = createSlice({
 export const selectAllBugs = (state) => state.bugs.bugs;
 export const getBugsStatus = (state) => state.bugs.status;
 export const getBugsError = (state) => state.bugs.error;
+export const selectBugById = (state, bugId) =>
+  state.bugs.bugs.find((bug) => bug.id === bugId);
 
 export const { reset } = bugSlice.actions;
 

@@ -11,7 +11,7 @@ const bugSchema = mongoose.Schema({
   complete: { type: Boolean, default: false },
   time: {
     type: Date,
-    default: new Date().toDateString("en-US"),
+    default: new Date().toISOString(),
   },
 });
 

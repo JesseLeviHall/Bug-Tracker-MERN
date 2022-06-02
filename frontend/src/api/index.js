@@ -23,6 +23,6 @@ export const markComplete = async (id) => {
 };
 
 export const updateBug = async (id, updatedBug) => {
-  const response = await axios.patch(`${url}/${id}`, updatedBug);
+  const response = await axios.put(`${url}/${id}`, updatedBug);
   return response.data;
 };
