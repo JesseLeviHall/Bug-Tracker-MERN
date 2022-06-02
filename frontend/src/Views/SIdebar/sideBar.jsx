@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { NavItem, NavLink, Nav, Button, Col } from "reactstrap";
-import { faBug } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBug,
+  faPersonDotsFromLine,
+  faProcedures,
+} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../Controllers/Reducers/authSlice";
 import "./sidebar.css";
@@ -42,8 +46,15 @@ export default function Navigation({ isOpen, toggle }) {
         </NavItem>
 
         <NavItem className="py-3">
-          <NavLink className="nav-link" tag={Link} to="/mybugs">
+          <NavLink className="nav-link" tag={Link} to="/create">
             <FontAwesomeIcon icon={faWrench} />
+            {" Create New Bug"}
+          </NavLink>
+        </NavItem>
+
+        <NavItem className="py-3">
+          <NavLink className="nav-link" tag={Link} to="/mybugs">
+            <FontAwesomeIcon icon={faPersonDotsFromLine} />
             {" Assigned To Me"}
           </NavLink>
         </NavItem>

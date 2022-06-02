@@ -1,26 +1,32 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
+import { addBug } from "../../../Controllers/Reducers/bugSlice";
 
 export default function BugForm(props) {
-  const [createBug, setCreateBug] = useState();
-  function inputChanged(e) {
+  const [createBug, setCreateBug] = useState({});
+  const dispatch = useDispatch();
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addBug({ createBug }));
     setCreateBug({
       ...createBug,
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
   return (
     <div className="container-sm">
       {props.title == "Edit Bug" && <Button close onClick={props.close} />}
       <h1 className="form-title mb-4 mt-5">{props.title}</h1>
-      <Form>
+      <Form onSubmit={formSubmit}>
         <FormGroup className="justify-content-center">
           <Label for="Name">Name:</Label>
           <Col sm={9}>
             <Input
               value={createBug.name}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               name="name"
               placeholder="Bug Name"
               required
@@ -32,7 +38,7 @@ export default function BugForm(props) {
           <Col sm={9}>
             <Input
               value={createBug.details}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               required
               id="details"
               name="details"
@@ -46,7 +52,7 @@ export default function BugForm(props) {
           <Col sm={9}>
             <Input
               value={createBug.steps}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               required
               id="steps"
               name="steps"
@@ -62,7 +68,7 @@ export default function BugForm(props) {
           <Col sm={9}>
             <Input
               value={createBug.priority}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               required
               id="priority"
               name="priority"
@@ -80,7 +86,7 @@ export default function BugForm(props) {
           <Col sm={9}>
             <Input
               value={createBug.assigned}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               required
               id="assigned"
               name="assigned"
@@ -96,7 +102,7 @@ export default function BugForm(props) {
           <Col sm={9}>
             <Input
               value={createBug.version}
-              onChange={inputChanged}
+              onChange={(e) => setCreateBug(e.target.value)}
               id="version"
               name="version"
               placeholder="What Version?"></Input>
