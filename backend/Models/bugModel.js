@@ -7,7 +7,6 @@ const bugSchema = mongoose.Schema({
   webpage: String,
   priority: Number,
   assigned: String,
-  creator: String,
   complete: { type: Boolean, default: false },
   time: {
     type: Date,

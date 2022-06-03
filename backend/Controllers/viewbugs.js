@@ -33,24 +33,29 @@ export const createBug = async (req, res) => {
 
 export const updateBug = async (req, res) => {
   const { id } = req.params;
-  const { name, details, steps, assigned, priority, webpage } = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No bug with id: ${id}`);
+  const { name, details, steps, webpage, priority, assigned, complete } =
+    req.body;
 
   const updatedBug = {
     name,
     details,
     steps,
-    assigned,
-    priority,
     webpage,
+    priority,
+    assigned,
+    complete,
     _id: id,
   };
 
-  await Bugs.findByIdAndUpdate(id, updatedBug, { new: true });
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No bug with id: ${id}`);
 
-  res.json(updatedBug);
+  try {
+    await Bugs.findByIdAndUpdate(id, updatedBug, { new: true });
+    res.json(updatedBug);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };
 
 export const deleteBug = async (req, res) => {
