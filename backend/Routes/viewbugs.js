@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getBugs,
+  getABug,
   createBug,
   updateBug,
   deleteBug,
@@ -9,6 +10,7 @@ import {
 const router = express.Router();
 
 router.get("/", getBugs);
+router.get("/:id", getABug);
 router.post("/", createBug);
 router.put("/:id", updateBug);
 router.delete("/:id", deleteBug);
