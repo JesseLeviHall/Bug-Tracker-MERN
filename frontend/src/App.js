@@ -28,7 +28,7 @@ function App() {
             <Route path="/create">
               <BugForm />
             </Route>
-            <Route path="/viewbugs/bugId">
+            <Route path="/viewbugs/:bugId">
               <EditBugForm />
             </Route>
           </Switch>
