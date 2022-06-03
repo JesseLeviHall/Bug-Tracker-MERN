@@ -1,19 +1,14 @@
 import React from "react";
 import { Col, Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
-import { markComplete } from "../../../Controllers/Reducers/bugSlice";
-import { useDispatch } from "react-redux";
 import Priority from "../../../Controllers/priorityController";
 import { Link } from "react-router-dom";
 
 export default function bugCard(props) {
   const { color } = Priority(props.priority);
-  function Clicked() {
-    props.clicked(props.name);
-  }
 
   return (
     <Col className="mt-5" md="4">
-      <Card className="mt-2" onClick={Clicked} style={{ color: color }}>
+      <Card className="mt-2" style={{ color: color }}>
         <CardTitle className="mt-2 text-center" tag="h5">
           {props.bug.name}
         </CardTitle>
@@ -24,17 +19,14 @@ export default function bugCard(props) {
             Assigned: {props.bug.assigned} <br />
             Created: {props.bug.time} <br />
             Priority: {props.bug.priority} <br />
-            Webpage: {props.bug.webpage}
+            Webpage: {props.bug.webpage} <br />
+            Status: {props.bug.completed ? "Resolved" : "Active"}
           </CardText>
           <Button outline color="info" className="ms-3 mt-3" size="sm">
-            <Link to={`/bug/edit/${props.bug._id}`}>Edit Bug</Link>
+            <Link to={`/viewbugs/${props.bug._id}`}>Edit Bug</Link>
           </Button>
         </CardBody>
       </Card>
     </Col>
   );
 }
-
-// for button  onClick={() => {
-// dispatch(markComplete());
-//  }}>

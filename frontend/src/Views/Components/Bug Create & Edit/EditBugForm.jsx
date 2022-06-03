@@ -15,7 +15,7 @@ const EditBugForm = () => {
   const updateThisBug = useSelector((state) =>
     selectBugById(state, Number(bugId))
   );
-
+  console.log(updateThisBug);
   if (!updateThisBug) {
     return (
       <section>
