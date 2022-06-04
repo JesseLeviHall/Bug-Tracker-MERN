@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   selectBugById,
   updateBug,
@@ -7,7 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 
-const EditBugForm = () => {
+const EditBugForm = (props) => {
   const { bugId } = useParams();
   const dispatch = useDispatch();
   const navigate = Redirect();
@@ -26,7 +26,7 @@ const EditBugForm = () => {
 
   return (
     <div>
-      <h1>Edit Bug Form for {updateThisBug._id}</h1>
+      <h1>Edit Bug Form for </h1>
     </div>
   );
 };

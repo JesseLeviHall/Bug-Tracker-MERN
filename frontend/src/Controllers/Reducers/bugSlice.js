@@ -62,6 +62,7 @@ const bugSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+
       //create
       .addCase(addBug.fulfilled, (state, action) => {
         state.status = "succeeded";

@@ -22,7 +22,6 @@ function App() {
               <Dashboard />
             </Route>
             <Route path="/viewbugs">
-              {" "}
               <ViewBugPage />
             </Route>
             <Route path="/create">

@@ -7,6 +7,11 @@ export const fetchBugs = async () => {
   return response.data;
 };
 
+export const fetchBug = async (id) => {
+  const response = await API.get(`/viewbugs/${id}`);
+  return response.data;
+};
+
 export const createBug = async (newBug) => {
   const response = await API.post("/viewbugs", newBug);
   return response.data;

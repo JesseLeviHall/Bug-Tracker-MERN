@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row } from "reactstrap";
 import {
@@ -10,11 +10,6 @@ import {
 import BugCard from "../Components/Bug Card/BugCard";
 
 export default function ViewBugs() {
-  const [DISPLAY_BUG, SET_DISPLAY_BUG] = useState({
-    name: "",
-    isDisplayed: false,
-  });
-
   const dispatch = useDispatch();
   const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
@@ -26,20 +21,11 @@ export default function ViewBugs() {
     }
   }, [bugStatus, dispatch]);
 
-  function BugClicked(name) {
-    SET_DISPLAY_BUG({
-      isDisplayed: !DISPLAY_BUG.isDisplayed,
-      name: name,
-    });
-  }
-
   let content;
   if (bugStatus === "loading") {
     content = <p> Loading...</p>;
   } else if (bugStatus === "succeeded") {
-    content = bugs.map((bug) => (
-      <BugCard key={bug._id} bug={bug} clicked={BugClicked} />
-    ));
+    content = bugs.map((bug) => <BugCard key={bug._id} bug={bug} />);
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;
   }

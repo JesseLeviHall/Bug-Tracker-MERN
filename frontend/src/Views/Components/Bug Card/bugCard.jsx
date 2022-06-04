@@ -20,7 +20,7 @@ export default function bugCard(props) {
             Created: {props.bug.time} <br />
             Priority: {props.bug.priority} <br />
             Webpage: {props.bug.webpage} <br />
-            Status: {props.bug.completed ? "Resolved" : "Active"}
+            Status: {props.bug.completed === true ? "Resolved" : "Active"}
           </CardText>
           <Button outline color="info" className="ms-3 mt-3" size="sm">
             <Link to={`/viewbugs/${props.bug._id}`}>Edit Bug</Link>
