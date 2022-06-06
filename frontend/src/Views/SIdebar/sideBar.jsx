@@ -22,6 +22,8 @@ export default function Navigation({ isOpen, toggle }) {
   function SignOut() {
     dispatch(signOut);
   }
+
+  //will need a sign out function
   return (
     <div className="container-sm">
       <Col className="text-center mt-5 mb-5 text-nowrap">
