@@ -26,7 +26,7 @@ const EditBugForm = (props) => {
 
   return (
     <div>
-      <h1>Edit Bug Form for </h1>
+      <h1>Edit Bug Form To Update and assign </h1>
     </div>
   );
 };
