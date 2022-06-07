@@ -5,12 +5,11 @@ import {
   deleteBug,
 } from "../../../Controllers/Reducers/bugSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const EditBugForm = (props) => {
   const { bugId } = useParams();
   const dispatch = useDispatch();
-  const navigate = Redirect();
 
   const updateThisBug = useSelector((state) =>
     selectBugById(state, Number(bugId))
@@ -18,9 +17,9 @@ const EditBugForm = (props) => {
 
   if (!updateThisBug) {
     return (
-      <section>
+      <div>
         <h2>Bug not found!</h2>
-      </section>
+      </div>
     );
   }
 
