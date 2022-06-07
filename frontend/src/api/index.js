@@ -18,16 +18,16 @@ export const createBug = async (newBug) => {
 };
 
 export const deleteBug = async (id) => {
-  const response = await axios.delete(`/viewbugs/${id}`);
+  const response = await API.delete(`/viewbugs/${id}`);
   return response.data;
 };
 
 export const markComplete = async (id) => {
-  const response = await axios.patch(`/viewbugs/${id}/markComplete`);
+  const response = await API.patch(`/viewbugs/${id}/markComplete`);
   return response.data;
 };
 
 export const updateBug = async (id, updatedBug) => {
-  const response = await axios.patch(`/viewbugs/${id}`, updatedBug);
+  const response = await API.patch(`/viewbugs/${id}`, updatedBug);
   return response.data;
 };
