@@ -23,7 +23,7 @@ export const deleteBug = async (id) => {
 };
 
 export const markComplete = async (id) => {
-  const response = await API.patch(`/viewbugs/${id}/markComplete`);
+  const response = await API.patch(`/markcomplete/${id}/markComplete`);
   return response.data;
 };
 

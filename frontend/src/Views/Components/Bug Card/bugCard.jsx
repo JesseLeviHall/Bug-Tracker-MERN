@@ -14,13 +14,14 @@ export default function bugCard(props) {
         </CardTitle>
         <CardBody>
           <CardText className="text-left ms-3">
+            Assigned: {props.bug.assigned} <br />
+            Status: {props.bug.completed === false ? "Resolved" : "Active"}
+            <br />
+            Priority: {props.bug.priority} <br />
+            Created: {props.bug.time} <br />
             Details: {props.bug.details} <br />
             Steps: {props.bug.steps} <br />
-            Assigned: {props.bug.assigned} <br />
-            Created: {props.bug.time} <br />
-            Priority: {props.bug.priority} <br />
             Webpage: {props.bug.webpage} <br />
-            Status: {props.bug.completed === false ? "Resolved" : "Active"}
           </CardText>
           <Button outline color="info" className="ms-3 mt-3" size="sm">
             <Link to={`/editbug/${props.bug._id}`}>Edit Bug</Link>

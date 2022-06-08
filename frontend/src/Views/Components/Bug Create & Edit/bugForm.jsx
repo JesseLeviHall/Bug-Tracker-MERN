@@ -36,7 +36,7 @@ export default function BugForm() {
         setPriority("");
         setWebpage("");
       } catch (err) {
-        console.error("Failed to save the post", err);
+        console.error("Failed to save the bug", err);
       } finally {
         setAddRequestStatus("idle");
       }

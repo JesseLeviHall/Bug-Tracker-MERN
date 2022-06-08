@@ -24,7 +24,7 @@ export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
 });
 
 export const updateBug = createAsyncThunk(
-  "viewbugs/updateBug",
+  "editbug/updateBug",
   async (editBug) => {
     try {
       return await api.updateBug(editBug);
