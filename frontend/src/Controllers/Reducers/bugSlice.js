@@ -99,7 +99,7 @@ export const selectAllBugs = (state) => state.bugs.bugs;
 export const getBugsStatus = (state) => state.bugs.status;
 export const getBugsError = (state) => state.bugs.error;
 export const selectBugById = (state, bugId) =>
-  state.bugs.bugs.find((bug) => bug.id === bugId);
+  state.bugs.bugs.find((bug) => bug._id === bugId);
 
 export const { reset } = bugSlice.actions;
 

@@ -11,9 +11,7 @@ const EditBugForm = (props) => {
   const { bugId } = useParams();
   const dispatch = useDispatch();
 
-  const updateThisBug = useSelector((state) =>
-    selectBugById(state, Number(bugId))
-  );
+  const updateThisBug = useSelector((state) => selectBugById(state, bugId));
 
   if (!updateThisBug) {
     return (
