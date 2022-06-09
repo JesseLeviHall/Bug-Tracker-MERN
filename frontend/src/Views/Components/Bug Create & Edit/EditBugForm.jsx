@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 
-const EditBugForm = (props) => {
+const EditBugForm = () => {
   const { bugId } = useParams();
   const dispatch = useDispatch();
 
@@ -28,12 +28,16 @@ const EditBugForm = (props) => {
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
 
+  const updateThisBug = useSelector((state) => selectBugById(state, bugId));
+
   const formSubmit = (e) => {
     e.preventDefault();
     try {
+      const id = bugId;
       setAddRequestStatus("pending");
       dispatch(
-        updateBug(updateThisBug._id, {
+        updateBug(id, {
+          id: id,
           name,
           assigned,
           details,
@@ -54,8 +58,6 @@ const EditBugForm = (props) => {
       setAddRequestStatus("idle");
     }
   };
-
-  const updateThisBug = useSelector((state) => selectBugById(state, bugId));
 
   if (!updateThisBug) {
     return (

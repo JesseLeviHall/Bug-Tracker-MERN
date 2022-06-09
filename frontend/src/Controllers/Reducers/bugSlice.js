@@ -25,9 +25,9 @@ export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
 
 export const updateBug = createAsyncThunk(
   "viewbugs/updateBug",
-  async (updateThisBug) => {
+  async (id, updateThisBug) => {
     try {
-      return await api.updateBug(updateThisBug);
+      return await api.updateBug(id, updateThisBug);
     } catch (err) {
       return err.message;
     }
@@ -76,9 +76,7 @@ const bugSlice = createSlice({
           console.log(action.payload);
           return;
         }
-        const { id } = action.payload._id;
-        const bugs = state.bugs.filter((bug) => bug.id == id);
-        state.bugs = [...bugs, action.payload];
+        state.status = "succeeded";
       })
 
       //delete

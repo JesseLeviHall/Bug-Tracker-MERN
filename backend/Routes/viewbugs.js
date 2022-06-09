@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", getBugs);
 router.get("/:id", getABug);
 router.post("/", createBug);
-router.patch("/:id", updateBug);
+router.put("/:id", updateBug);
 router.delete("/:id", deleteBug);
 
 export default router;

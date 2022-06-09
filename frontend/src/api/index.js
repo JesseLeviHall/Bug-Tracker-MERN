@@ -23,11 +23,11 @@ export const deleteBug = async (id) => {
 };
 
 export const markComplete = async (id) => {
-  const response = await API.patch(`/markcomplete/${id}/markComplete`);
+  const response = await API.put(`/markcomplete/${id}/markComplete`);
   return response.data;
 };
 
 export const updateBug = async (id, updateThisBug) => {
-  const response = await API.patch(`/viewbugs/${id}`, updateThisBug);
+  const response = await API.put(`/viewbugs/${id}`, updateThisBug);
   return response.data;
 };
