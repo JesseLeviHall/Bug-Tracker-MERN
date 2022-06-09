@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   selectBugById,
   updateBug,
@@ -28,15 +28,19 @@ const EditBugForm = (props) => {
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
 
-  const canSave = [].every(Boolean) && addRequestStatus === "idle";
-
   const formSubmit = (e) => {
     e.preventDefault();
-
     try {
       setAddRequestStatus("pending");
       dispatch(
-        updateBug({ name, details, steps, priority, webpage, assigned })
+        updateBug(updateThisBug._id, {
+          name,
+          assigned,
+          details,
+          steps,
+          priority,
+          webpage,
+        })
       ).unwrap();
       setName("");
       setDetails("");

@@ -24,10 +24,10 @@ export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
 });
 
 export const updateBug = createAsyncThunk(
-  "editbug/updateBug",
-  async (editBug) => {
+  "viewbugs/updateBug",
+  async (updateThisBug) => {
     try {
-      return await api.updateBug(editBug);
+      return await api.updateBug(updateThisBug);
     } catch (err) {
       return err.message;
     }
@@ -71,19 +71,19 @@ const bugSlice = createSlice({
 
       //update
       .addCase(updateBug.fulfilled, (state, action) => {
-        if (!action.payload?.id) {
+        if (!action.payload?._id) {
           console.log("Update could not be completed");
           console.log(action.payload);
           return;
         }
-        const { id } = action.payload;
-        const bugs = state.bugs.filter((bug) => bug.id !== id);
+        const { id } = action.payload._id;
+        const bugs = state.bugs.filter((bug) => bug.id == id);
         state.bugs = [...bugs, action.payload];
       })
 
       //delete
       .addCase(deleteBug.fulfilled, (state, action) => {
-        if (!action.payload?.id) {
+        if (!action.payload?._id) {
           console.log("Could not delete");
           console.log(action.payload);
           return;
