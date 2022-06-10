@@ -10,6 +10,7 @@ import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 
 const EditBugForm = () => {
   const { bugId } = useParams();
+  const updateThisBug = useSelector((state) => selectBugById(state, bugId));
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,8 +30,6 @@ const EditBugForm = () => {
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
   console.log(assigned);
-
-  const updateThisBug = useSelector((state) => selectBugById(state, bugId));
 
   const onDeleteBugClicked = () => {
     const id = updateThisBug._id;
@@ -156,10 +155,10 @@ const EditBugForm = () => {
           <Label for="Webpage">Webpage of Bug:</Label>
           <Col sm={9}>
             <Input
-              value={webpage}
               onChange={onWebpageChanged}
               id="webpage"
               name="webpage"
+              defaultValue={updateThisBug.webpage}
               placeholder={updateThisBug.webpage}></Input>
           </Col>
         </FormGroup>

@@ -50,7 +50,7 @@ export const updateBug = async (req, res) => {
     _id: id,
   };
 
-  await Bugs.findByIdAndUpdate(id, updatedBug, { new: true });
+  await Bugs.findByIdAndUpdate(id, updatedBug);
   res.status(200).json(updatedBug);
 };
 
