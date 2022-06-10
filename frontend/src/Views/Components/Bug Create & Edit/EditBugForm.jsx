@@ -29,7 +29,6 @@ const EditBugForm = () => {
   const onPriorityChanged = (e) => setPriority(e.target.value);
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
-  console.log(assigned);
 
   const onDeleteBugClicked = () => {
     const id = updateThisBug._id;
@@ -158,7 +157,7 @@ const EditBugForm = () => {
               onChange={onWebpageChanged}
               id="webpage"
               name="webpage"
-              defaultValue={updateThisBug.webpage}
+              value={webpage}
               placeholder={updateThisBug.webpage}></Input>
           </Col>
         </FormGroup>

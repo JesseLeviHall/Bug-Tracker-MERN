@@ -28,7 +28,6 @@ export const editBug = createAsyncThunk(
   "viewbugs/updateBug",
   async (updatedBug) => {
     try {
-      console.log(updatedBug);
       return await api.updateBug(updatedBug);
     } catch (err) {
       return err.message;
@@ -80,8 +79,9 @@ const bugSlice = createSlice({
           return;
         }
         state.status = "succeeded";
-        console.log(state.status);
-        console.log(action.payload);
+        state.bugs = state.bugs.map((bug) =>
+          bug._id === action.payload._id ? action.payload : bug
+        );
       })
 
       //delete
@@ -91,9 +91,11 @@ const bugSlice = createSlice({
           console.log(action.payload);
           return;
         }
-        const { id } = action.payload;
-        const bugs = state.bugs.filter((bug) => bug._id !== id);
-        state.bugs = bugs;
+        state.status = "succeeded";
+        console.log(action.payload);
+        state.bugs = state.bugs.filter((bug) => {
+          return bug._id !== action.payload._id;
+        });
       });
   },
 });
