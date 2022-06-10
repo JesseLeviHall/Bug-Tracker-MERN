@@ -78,7 +78,9 @@ const bugSlice = createSlice({
         }
         state.status = "succeeded";
         console.log(state.status);
-        state.bugs = action.payload;
+        const { id } = action.payload;
+        const bugs = state.bugs.push(action.payload);
+        state.bugs = [bugs];
       })
 
       //delete
