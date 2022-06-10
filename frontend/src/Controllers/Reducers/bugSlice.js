@@ -17,17 +17,19 @@ export const fetchBugs = createAsyncThunk("viewbugs/fetchBugs", async () => {
 
 export const addBug = createAsyncThunk("viewbugs/addBug", async (newBug) => {
   try {
+    console.log(newBug);
     return await api.createBug(newBug);
   } catch (err) {
     return err.message;
   }
 });
 
-export const updateBug = createAsyncThunk(
+export const editBug = createAsyncThunk(
   "viewbugs/updateBug",
-  async (id, updateThisBug) => {
+  async (updatedBug) => {
     try {
-      return await api.updateBug(id, updateThisBug);
+      console.log(updatedBug);
+      return await api.updateBug(updatedBug);
     } catch (err) {
       return err.message;
     }
@@ -67,10 +69,11 @@ const bugSlice = createSlice({
       .addCase(addBug.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.bugs.push(action.payload);
+        console.log(action.payload);
       })
 
       //update
-      .addCase(updateBug.fulfilled, (state, action) => {
+      .addCase(editBug.fulfilled, (state, action) => {
         if (!action.payload?._id) {
           console.log("Update could not be completed");
           console.log(action.payload);
@@ -78,9 +81,7 @@ const bugSlice = createSlice({
         }
         state.status = "succeeded";
         console.log(state.status);
-        const { id } = action.payload;
-        const bugs = state.bugs.push(action.payload);
-        state.bugs = [bugs];
+        console.log(action.payload);
       })
 
       //delete

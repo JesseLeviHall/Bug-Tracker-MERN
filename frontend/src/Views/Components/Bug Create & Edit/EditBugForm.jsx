@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   selectBugById,
-  updateBug,
+  editBug,
   deleteBug,
 } from "../../../Controllers/Reducers/bugSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +28,7 @@ const EditBugForm = () => {
   const onPriorityChanged = (e) => setPriority(e.target.value);
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
+  console.log(assigned);
 
   const updateThisBug = useSelector((state) => selectBugById(state, bugId));
 
@@ -46,11 +47,10 @@ const EditBugForm = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     try {
-      const id = bugId;
       setAddRequestStatus("pending");
       dispatch(
-        updateBug(id, {
-          id: id,
+        editBug({
+          id: updateThisBug._id,
           name,
           assigned,
           details,
@@ -65,7 +65,6 @@ const EditBugForm = () => {
       setPriority("");
       setWebpage("");
       setAssigned("");
-      history.push("/viewbugs");
     } catch (err) {
       console.error("Failed to save the update", err);
     } finally {
@@ -76,7 +75,7 @@ const EditBugForm = () => {
   if (!updateThisBug) {
     return (
       <div className="container-sm">
-        <h2 className="mt-5 text-center">Bug not found!</h2>
+        <h2 className="mt-5 text-center">Bug not Selected!</h2>
       </div>
     );
   }

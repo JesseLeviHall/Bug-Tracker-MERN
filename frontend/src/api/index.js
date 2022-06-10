@@ -27,7 +27,8 @@ export const markComplete = async (id) => {
   return response.data;
 };
 
-export const updateBug = async (id, updateThisBug) => {
-  const response = await API.put(`/viewbugs/${id}`, updateThisBug);
+export const updateBug = async (updatedBug) => {
+  const id = updatedBug.id;
+  const response = await API.patch(`/viewbugs/${id}`, updatedBug);
   return response.data;
 };
