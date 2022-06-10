@@ -5,12 +5,13 @@ import {
   deleteBug,
 } from "../../../Controllers/Reducers/bugSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 
 const EditBugForm = () => {
   const { bugId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
@@ -35,6 +36,7 @@ const EditBugForm = () => {
     try {
       setAddRequestStatus("pending");
       dispatch(deleteBug(id, { id: id })).unwrap();
+      history.push("/viewbugs");
     } catch (err) {
       console.error("Failed to delete the bug", err);
     } finally {
@@ -63,6 +65,7 @@ const EditBugForm = () => {
       setPriority("");
       setWebpage("");
       setAssigned("");
+      history.push("/viewbugs");
     } catch (err) {
       console.error("Failed to save the update", err);
     } finally {
