@@ -30,6 +30,17 @@ const EditBugForm = () => {
 
   const updateThisBug = useSelector((state) => selectBugById(state, bugId));
 
+  const onDeleteBugClicked = () => {
+    const id = updateThisBug._id;
+    try {
+      setAddRequestStatus("pending");
+      dispatch(deleteBug(id, { id: id })).unwrap();
+    } catch (err) {
+      console.error("Failed to delete the bug", err);
+    } finally {
+      setAddRequestStatus("idle");
+    }
+  };
   const formSubmit = (e) => {
     e.preventDefault();
     try {
@@ -154,6 +165,13 @@ const EditBugForm = () => {
           <Col xs={10}>
             <Button className="mt-4 mb-5" color="info" type="submit">
               Update
+            </Button>
+            <Button
+              onClick={onDeleteBugClicked}
+              className="ms-5 mt-4 mb-5"
+              color="info"
+              type="button">
+              Delete
             </Button>
           </Col>
         </FormGroup>

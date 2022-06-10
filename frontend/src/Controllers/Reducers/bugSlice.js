@@ -77,6 +77,8 @@ const bugSlice = createSlice({
           return;
         }
         state.status = "succeeded";
+        console.log(state.status);
+        state.bugs = action.payload;
       })
 
       //delete
