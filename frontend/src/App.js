@@ -9,8 +9,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import Navigation from "./Views/SIdebar/sideBar";
-import BugForm from "./Views/Components/Bug Create & Edit/BugForm";
-import EditBugForm from "./Views/Components/Bug Create & Edit/EditBugForm";
+import BugForm from "./Views/Components/Forms/BugForm";
+import EditBugForm from "./Views/Components/Forms/EditBugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 
 function App() {
