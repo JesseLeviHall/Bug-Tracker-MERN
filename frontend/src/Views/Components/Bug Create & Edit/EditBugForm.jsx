@@ -42,6 +42,7 @@ const EditBugForm = () => {
       setAddRequestStatus("idle");
     }
   };
+
   const formSubmit = (e) => {
     e.preventDefault();
     try {
