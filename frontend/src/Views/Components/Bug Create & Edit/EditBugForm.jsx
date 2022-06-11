@@ -31,10 +31,10 @@ const EditBugForm = () => {
   const onAssignedChanged = (e) => setAssigned(e.target.value);
 
   const onDeleteBugClicked = () => {
-    const id = updateThisBug._id;
     try {
+      console.log(updateThisBug._id);
       setAddRequestStatus("pending");
-      dispatch(deleteBug(id, { id: id })).unwrap();
+      dispatch(deleteBug(updateThisBug._id)).unwrap();
       history.push("/viewbugs");
     } catch (err) {
       console.error("Failed to delete the bug", err);

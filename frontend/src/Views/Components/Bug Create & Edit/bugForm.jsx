@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import { addBug } from "../../../Controllers/Reducers/bugSlice";
 
 export default function BugForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
@@ -35,6 +37,7 @@ export default function BugForm() {
         setSteps("");
         setPriority("");
         setWebpage("");
+        history.push("/viewbugs");
       } catch (err) {
         console.error("Failed to save the bug", err);
       } finally {

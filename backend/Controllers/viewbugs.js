@@ -60,7 +60,7 @@ export const deleteBug = async (req, res) => {
     return res.status(404).send(`No bug with id: ${id}`);
   try {
     await Bugs.findByIdAndDelete(id);
-    res.json({ message: "Post deleted successfully." });
+    res.json({ message: "Bug deleted successfully." });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
