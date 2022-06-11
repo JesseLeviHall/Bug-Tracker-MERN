@@ -4,7 +4,7 @@ import { NavItem, NavLink, Nav, Button, Col } from "reactstrap";
 import { faBug, faPersonDotsFromLine } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../Controllers/Reducers/authSlice";
-import "./sidebar.css";
+import "./navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNetworkWired,

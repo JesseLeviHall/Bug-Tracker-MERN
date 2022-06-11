@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
-
+import Navigation from "../../Components/Navagation/Navigation";
 import DashboardItem from "../../Components/DashboardItem/DashboardItem";
 import {
   fetchBugs,
@@ -30,29 +30,32 @@ export default function Dashboard() {
     midCount = filterBugs(2);
     lowCount = filterBugs(3);
     content = (
-      <Row>
-        <Col className="mt-5" md="4">
-          <DashboardItem
-            clicked={redirect}
-            priority="1"
-            count={highCount.length}
-          />
-        </Col>
-        <Col className="mt-5" md="4">
-          <DashboardItem
-            clicked={redirect}
-            priority="2"
-            count={midCount.length}
-          />
-        </Col>
-        <Col className="mt-5" md="4">
-          <DashboardItem
-            clicked={redirect}
-            priority="3"
-            count={lowCount.length}
-          />
-        </Col>
-      </Row>
+      <>
+        <Navigation />
+        <Row>
+          <Col className="mt-5" md="4">
+            <DashboardItem
+              clicked={redirect}
+              priority="1"
+              count={highCount.length}
+            />
+          </Col>
+          <Col className="mt-5" md="4">
+            <DashboardItem
+              clicked={redirect}
+              priority="2"
+              count={midCount.length}
+            />
+          </Col>
+          <Col className="mt-5" md="4">
+            <DashboardItem
+              clicked={redirect}
+              priority="3"
+              count={lowCount.length}
+            />
+          </Col>
+        </Row>
+      </>
     );
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;

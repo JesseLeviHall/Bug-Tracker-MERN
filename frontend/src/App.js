@@ -7,6 +7,7 @@ import BugForm from "./Views/Components/Forms/BugForm";
 import EditBugForm from "./Views/Components/Forms/EditBugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 import Register from "./Views/Pages/Register";
+import MyBugs from "./Views/Pages/MyBugs";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/editbug/:bugId">
             <EditBugForm />
+          </Route>
+          <Route path="/mybugs">
+            <MyBugs />
           </Route>
         </Switch>
       </div>

@@ -7,6 +7,7 @@ import {
   getBugsStatus,
   selectAllBugs,
 } from "../../Controllers/Reducers/bugSlice";
+import Navigation from "../Components/Navagation/Navigation";
 import BugCard from "../Components/Bug Card/BugCard";
 
 export default function ViewBugs() {
@@ -32,7 +33,9 @@ export default function ViewBugs() {
 
   return (
     <div className="container-sm">
+      <Navigation />
       <h2 className="text-center mt-5">These are all the bugs</h2>
+
       <Row>{content}</Row>
     </div>
   );

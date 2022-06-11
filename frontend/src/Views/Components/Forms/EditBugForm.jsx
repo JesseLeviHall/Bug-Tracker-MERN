@@ -4,6 +4,7 @@ import {
   editBug,
   deleteBug,
 } from "../../../Controllers/Reducers/bugSlice";
+import Navigation from "../Navagation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
@@ -80,6 +81,7 @@ const EditBugForm = () => {
 
   return (
     <div className="container-sm">
+      <Navigation />
       <h1 className="form-title mb-4 mt-5 text-center">
         Form To Update and Assign
       </h1>

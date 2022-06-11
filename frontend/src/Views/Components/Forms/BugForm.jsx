@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import { addBug } from "../../../Controllers/Reducers/bugSlice";
+import Navigation from "../Navagation/Navigation";
 
 export default function BugForm() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ export default function BugForm() {
 
   return (
     <div className="container-sm">
+      <Navigation />
       <h1 className="form-title mb-4 mt-5 text-center">Create New Bug</h1>
       <Form className="offset-md-2" onSubmit={formSubmit}>
         <FormGroup>
