@@ -62,7 +62,7 @@ export default () => {
             outline
             style={{
               backgroundColor: "#626567",
-              borderColor: "#333",
+              borderColor: "#000000",
             }}>
             <CardBody>
               <CardTitle className="text-center" tag="h1">

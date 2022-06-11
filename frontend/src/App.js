@@ -10,33 +10,31 @@ import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 import Register from "./Views/Pages/Register";
 
 function App() {
-  const { auth } = useSelector((state) => state);
   return (
     <Router>
-      {!auth.LoggedIn ? (
-        <Login />
-      ) : (
-        <div>
+      <div className="container">
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
           <Navigation />
-          <Switch>
-            <Route path="/" exact>
-              <Dashboard />
-            </Route>
-            <Route path="/viewbugs">
-              <ViewBugPage />
-            </Route>
-            <Route path="/create">
-              <BugForm />
-            </Route>
-            <Route path="/editbug/:bugId">
-              <EditBugForm />
-            </Route>
-            <Route path="/register" exact>
-              <Register />
-            </Route>
-          </Switch>
-        </div>
-      )}
+          <Route path="/" exact>
+            <Dashboard />
+          </Route>
+          <Route path="/viewbugs">
+            <ViewBugPage />
+          </Route>
+          <Route path="/create">
+            <BugForm />
+          </Route>
+          <Route path="/editbug/:bugId">
+            <EditBugForm />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 }

@@ -79,7 +79,7 @@ export default function Register() {
             className="sm-4"
             style={{
               backgroundColor: "#626567",
-              borderColor: "#333",
+              borderColor: "#000000",
             }}>
             <CardBody>
               <CardTitle className="text-center" tag="h1">
@@ -115,7 +115,7 @@ export default function Register() {
                     required
                   />
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className="mt-5">
                   <Label for="userName">Create User Name:</Label>
                   <Input
                     value={userName}
@@ -135,7 +135,7 @@ export default function Register() {
                     required
                   />
                 </FormGroup>
-                <Button className="mt-2" block color="info" type="submit">
+                <Button className="mt-5" block color="info" type="submit">
                   Register
                 </Button>
               </Form>
