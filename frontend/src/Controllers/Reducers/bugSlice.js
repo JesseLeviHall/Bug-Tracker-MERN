@@ -84,14 +84,14 @@ const bugSlice = createSlice({
 
       //delete
       .addCase(deleteBug.fulfilled, (state, action) => {
-        console.log(action.payload);
         if (!action.payload) {
+          console.log(action.payload);
           console.log("Could not delete");
           return;
         }
-        state.bugs = state.bugs.filter((bug) => {
-          return bug._id !== action.payload;
-        });
+        console.log(action.payload);
+        const bugs = state.bugs.filter((bug) => bug._id !== action.payload.id);
+        state.bugs = bugs;
       });
   },
 });

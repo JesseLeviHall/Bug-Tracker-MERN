@@ -32,7 +32,6 @@ const EditBugForm = () => {
 
   const onDeleteBugClicked = () => {
     try {
-      console.log(updateThisBug._id);
       setAddRequestStatus("pending");
       dispatch(deleteBug(updateThisBug._id)).unwrap();
       history.push("/viewbugs");
