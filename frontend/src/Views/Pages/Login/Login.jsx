@@ -2,6 +2,7 @@ import { faBug } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -19,13 +20,12 @@ import {
   FormFeedback,
 } from "reactstrap";
 import { signIn } from "../../../Controllers/Reducers/authSlice";
-import "./login.css";
 
 export default () => {
   const dispatch = useDispatch();
 
   const [formInput, setFormInput] = useState({
-    name: "",
+    username: "",
     password: "",
   });
 
@@ -56,7 +56,14 @@ export default () => {
       <br />
       <Row className="no-gutters justify-content-center">
         <Col sm="6">
-          <Card id="one" className="sm-4" color="secondary" outline>
+          <Card
+            className="sm-4"
+            inverse
+            outline
+            style={{
+              backgroundColor: "#626567",
+              borderColor: "#333",
+            }}>
             <CardBody>
               <CardTitle className="text-center" tag="h1">
                 Bug Tracker
@@ -74,7 +81,7 @@ export default () => {
                 <FormGroup>
                   <Input
                     name="name"
-                    placeholder="Name"
+                    placeholder="User Name"
                     onChange={inputchanged}
                     value={formInput.name}></Input>
                   <FormFeedback>Something</FormFeedback>
@@ -104,7 +111,7 @@ export default () => {
                   Login
                 </Button>
                 <p className="forgot-password text-center mt-4">
-                  New? <a href="#">Sign-Up</a>
+                  New? <Link to={"/register"}>Sign-Up</Link>
                 </p>
               </Form>
             </CardBody>
