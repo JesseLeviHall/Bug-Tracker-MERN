@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import Login from "./Views/Pages/Login/Login";
 import ViewBugPage from "./Views/Pages/ViewAllBugs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./Views/SIdebar/sideBar";
 import BugForm from "./Views/Components/Forms/BugForm";
 import EditBugForm from "./Views/Components/Forms/EditBugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
@@ -20,7 +19,6 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Navigation />
           <Route path="/" exact>
             <Dashboard />
           </Route>
