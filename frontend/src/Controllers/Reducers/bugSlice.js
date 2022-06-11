@@ -89,9 +89,8 @@ const bugSlice = createSlice({
           console.log("Could not delete");
           return;
         }
-        const id = action.payload;
         state.bugs = state.bugs.filter((bug) => {
-          return bug._id !== id;
+          return bug._id !== action.payload;
         });
       });
   },
