@@ -21,6 +21,7 @@ const EditBugForm = () => {
   const [priority, setPriority] = useState("");
   const [webpage, setWebpage] = useState("");
   const [assigned, setAssigned] = useState("");
+  const [complete, setComplete] = useState(Boolean);
 
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
 
@@ -30,6 +31,7 @@ const EditBugForm = () => {
   const onPriorityChanged = (e) => setPriority(e.target.value);
   const onWebpageChanged = (e) => setWebpage(e.target.value);
   const onAssignedChanged = (e) => setAssigned(e.target.value);
+  const onStatusChanged = (e) => setComplete(e.target.value);
 
   const onDeleteBugClicked = () => {
     try {
@@ -56,6 +58,7 @@ const EditBugForm = () => {
           steps,
           priority,
           webpage,
+          complete,
         })
       ).unwrap();
       setName("");
@@ -161,6 +164,17 @@ const EditBugForm = () => {
               name="webpage"
               value={webpage}
               placeholder={updateThisBug.webpage}></Input>
+          </Col>
+        </FormGroup>
+        <FormGroup className="sm-ms-4">
+          <Label for="Webpage">Mark Complete:</Label>
+          <Col sm={9}>
+            <Input
+              onChange={onStatusChanged}
+              type="checkbox"
+              id="complete"
+              name="complete"
+              value={complete}></Input>
           </Col>
         </FormGroup>
         <FormGroup className="sm-ms-4">
