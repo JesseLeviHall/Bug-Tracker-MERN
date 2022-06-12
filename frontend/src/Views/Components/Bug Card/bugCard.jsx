@@ -36,7 +36,7 @@ export default function bugCard(props) {
             <ListGroupItem>
               Created:{" "}
               <span className="ms-2">
-                {moment(props.bug.time).format("MM-DD-YY")}
+                {moment(props.bug.time).format("MM-DD-YY,  HH:mm")}
               </span>
             </ListGroupItem>
             <ListGroupItem>
