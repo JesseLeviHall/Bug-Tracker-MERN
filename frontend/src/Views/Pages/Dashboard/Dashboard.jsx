@@ -24,7 +24,7 @@ export default function Dashboard() {
   let lowCount = 0;
 
   if (bugStatus === "loading") {
-    content = <p> Loading...</p>;
+    content = <p className="text-center"> Loading...</p>;
   } else if (bugStatus === "succeeded") {
     highCount = filterBugs(1);
     midCount = filterBugs(2);
