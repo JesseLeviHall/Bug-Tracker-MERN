@@ -75,10 +75,9 @@ export default function Register() {
       <Row className="no-gutters justify-content-center">
         <Col sm="6">
           <Card
-            inverse
             className="sm-4"
             style={{
-              backgroundColor: "#626567",
+              backgroundColor: " #fee7e7 ",
               borderColor: "#000000",
             }}>
             <CardBody>

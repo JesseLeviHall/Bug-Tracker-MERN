@@ -58,10 +58,9 @@ export default () => {
         <Col sm="6">
           <Card
             className="sm-4"
-            inverse
             outline
             style={{
-              backgroundColor: "#626567",
+              backgroundColor: "#fee7e7",
               borderColor: "#000000",
             }}>
             <CardBody>
