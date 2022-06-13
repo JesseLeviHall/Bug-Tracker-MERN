@@ -1,5 +1,5 @@
 import { faBug } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useState, useHistory } from "react";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -23,6 +23,7 @@ import { signIn } from "../../../Controllers/Reducers/authSlice";
 
 export default () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [formInput, setFormInput] = useState({
     username: "",
@@ -40,6 +41,24 @@ export default () => {
     dispatch(signIn(formInput));
     e.preventDefault();
   }
+
+  /* const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch({ type: AUTH, data: { result, token } });
+
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  const googleError = (error) =>
+    console.log(error, "Google Sign In was unsuccessful.");
+    */
 
   return (
     <div className="container-as body">
@@ -120,3 +139,17 @@ export default () => {
     </div>
   );
 };
+
+/*  
+<GoogleLogin
+            clientId="130983152968-mn8tkng21c12lcpirrnu6cp83ut2ofh4.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
+                Google Sign In
+              </Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleError}
+            cookiePolicy="single_host_origin"
+          />
+*/
