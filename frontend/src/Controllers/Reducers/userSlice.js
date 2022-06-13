@@ -6,7 +6,7 @@ const slice = createSlice({
   reducers: {
     getUser: (state) => {
       state.push({ name: "jess man" });
-      state.push({ name: "corts ferrar" });
+      state.push({ name: "corts ferrari" });
     },
   },
 });
