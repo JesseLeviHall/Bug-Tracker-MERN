@@ -19,18 +19,18 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBug } from "@fortawesome/free-solid-svg-icons";
-import { addBug } from "../../Controllers/Reducers/bugSlice";
+import { register } from "../../Controllers/Reducers/authSlice";
 
 export default function Register() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
 
   const onFirstNameChanged = (e) => setFirstName(e.target.value);
   const onLastNameChanged = (e) => setLastName(e.target.value);
@@ -46,7 +46,9 @@ export default function Register() {
     if (canSave) {
       try {
         setAddRequestStatus("pending");
-        dispatch(addBug({ firstName, lastName, userName, password })).unwrap();
+        dispatch(
+          register({ firstName, lastName, userName, password })
+        ).unwrap();
         setFirstName("");
         setLastName("");
         setUserName("");

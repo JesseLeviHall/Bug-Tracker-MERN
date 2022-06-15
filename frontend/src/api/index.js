@@ -37,6 +37,14 @@ export const updateBug = async (updatedBug) => {
 
 //auth
 
+export const registerUser = async (newUser) => {
+  const response = await API.post("/register", newUser);
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  return response.data;
+};
+
 export const userLogin = async (userData) => {
   const response = await API.post("/login", userData);
   if (response.data) {
