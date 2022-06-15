@@ -19,7 +19,7 @@ import {
   Col,
   FormFeedback,
 } from "reactstrap";
-import { signIn } from "../../../Controllers/Reducers/authSlice";
+import { login } from "../../../Controllers/Reducers/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export default function Login() {
     e.preventDefault();
     try {
       dispatch(
-        signIn({
+        login({
           userName,
           password,
         })
@@ -44,7 +44,7 @@ export default function Login() {
       setPassword("");
       history.push("/");
     } catch (err) {
-      console.error("Failed to delete the bug", err);
+      console.error("failed to sign in", err);
     }
   };
 
