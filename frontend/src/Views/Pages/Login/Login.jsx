@@ -1,8 +1,8 @@
 import { faBug } from "@fortawesome/free-solid-svg-icons";
-import React, { useState, useHistory } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -21,26 +21,32 @@ import {
 } from "reactstrap";
 import { signIn } from "../../../Controllers/Reducers/authSlice";
 
-export default () => {
+export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [formInput, setFormInput] = useState({
-    username: "",
-    password: "",
-  });
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-  function inputchanged(e) {
-    setFormInput({
-      ...formInput,
-      [e.target.name]: e.target.value,
-    });
-  }
+  const onUserNameChanged = (e) => setUserName(e.target.value);
+  const onPasswordChanged = (e) => setPassword(e.target.value);
 
-  function submit(e) {
-    dispatch(signIn(formInput));
+  const loginSubmit = (e) => {
     e.preventDefault();
-  }
+    try {
+      dispatch(
+        signIn({
+          userName,
+          password,
+        })
+      ).unwrap();
+      setUserName("");
+      setPassword("");
+      history.push("/");
+    } catch (err) {
+      console.error("Failed to delete the bug", err);
+    }
+  };
 
   /* const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -95,23 +101,23 @@ export default () => {
                 style={{ fontWeight: "bold" }}>
                 Sign In:
               </CardSubtitle>
-              <Form>
+              <Form onSubmit={loginSubmit}>
                 <FormGroup>
                   <Input
-                    name="name"
+                    name="User Name"
                     placeholder="User Name"
-                    onChange={inputchanged}
-                    value={formInput.name}></Input>
+                    onChange={onUserNameChanged}
+                    value={userName}></Input>
                   <FormFeedback>Something</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <Input
-                    className="login-panel-input"
+                    required
                     name="password"
                     type="password"
                     placeholder="Password"
-                    onChange={inputchanged}
-                    value={formInput.password}></Input>
+                    onChange={onPasswordChanged}
+                    value={password}></Input>
                   <FormFeedback>Something</FormFeedback>
                 </FormGroup>
                 <Input type="checkbox" className="custom-control-input" />
@@ -120,12 +126,7 @@ export default () => {
                   htmlFor="customCheck1">
                   Remember me
                 </Label>
-                <Button
-                  className="mt-2"
-                  block
-                  color="info"
-                  type="submit"
-                  onClick={submit}>
+                <Button className="mt-2" block color="info" type="submit">
                   Login
                 </Button>
                 <p className="forgot-password text-center mt-4">
@@ -138,7 +139,7 @@ export default () => {
       </Row>
     </div>
   );
-};
+}
 
 /*  
 <GoogleLogin
