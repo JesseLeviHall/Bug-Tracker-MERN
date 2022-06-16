@@ -35,7 +35,7 @@ export const updateBug = async (updatedBug) => {
   return response.data;
 };
 
-//auth
+//auth and users
 
 export const registerUser = async (newUser) => {
   const response = await API.post("/register", newUser);
