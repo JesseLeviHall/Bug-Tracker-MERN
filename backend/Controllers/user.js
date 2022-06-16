@@ -1,36 +1,39 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import userModal from "../Models/userModel.js";
-
+import User from "../Models/userModel.js";
 const secret = "test";
 
 export const signup = async (req, res) => {
   const { firstName, lastName, userName, password } = req.body;
 
-  try {
-    const isUser = await userModal.findOne({ userName });
+  const isUser = await User.findOne({ userName });
 
-    if (isUser)
-      return res.status(400).json({ message: "User name already exists" });
+  if (isUser) {
+    return res.status(400).json({ message: "User name already exists" });
+  }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
-    const result = await userModal.create({
-      firstName,
-      lastName,
-      userName,
-      password: hashedPassword,
+  const result = await User.create({
+    firstName,
+    lastName,
+    userName,
+    password: hashedPassword,
+  });
+
+  const token = jwt.sign({ id: result._id }, secret, { expiresIn: "1h" });
+
+  if (result) {
+    res.status(201).json({
+      _id: result._id,
+      firstName: result.firstName,
+      lastName: result.lastName,
+      token: token,
     });
-
-    const token = jwt.sign({ user: result.userName, id: result._id }, secret, {
-      expiresIn: "4h",
-    });
-
-    res.status(201).json({ result, token });
-  } catch (error) {
-    res.status(500).json({ message: "Something went wrong" });
-
+  } else {
+    res.status(400).json({ message: "Something went wrong" });
     console.log(error);
   }
 };
