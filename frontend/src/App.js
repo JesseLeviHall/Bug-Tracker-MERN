@@ -14,7 +14,8 @@ import Register from "./Views/Pages/Register";
 import MyBugs from "./Views/Pages/MyBugs";
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("profile"));
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   return (
     <Router>
       <div className="container">

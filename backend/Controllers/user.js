@@ -29,6 +29,7 @@ export const signup = async (req, res) => {
       userName: result.userName,
       firstName: result.firstName,
       lastName: result.lastName,
+      role: result.role,
       token: generateToken(result._id),
     });
   } catch (error) {
@@ -47,6 +48,7 @@ export const loginUser = async (req, res) => {
         userName: user.userName,
         firstName: user.firstName,
         lastName: user.lastName,
+        role: user.role,
         token: generateToken(user._id),
       });
     }

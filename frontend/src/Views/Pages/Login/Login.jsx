@@ -130,7 +130,7 @@ export default function Login() {
                   Login
                 </Button>
                 <p className="forgot-password text-center mt-4">
-                  New? <Link to={"/register"}>Sign-Up</Link>
+                  New? <Link to={"/user/register"}>Sign-Up</Link>
                 </p>
               </Form>
             </CardBody>

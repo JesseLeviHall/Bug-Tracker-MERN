@@ -24,7 +24,7 @@ export default function ViewBugs() {
 
   let content;
   if (bugStatus === "loading") {
-    content = <p> Loading...</p>;
+    content = <p className="text-center mt-5"> Loading...</p>;
   } else if (bugStatus === "succeeded") {
     content = bugs.map((bug) => <BugCard key={bug._id} bug={bug} />);
   } else if (bugStatus === "failed") {

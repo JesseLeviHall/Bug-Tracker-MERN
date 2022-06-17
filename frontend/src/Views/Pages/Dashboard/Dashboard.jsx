@@ -16,7 +16,7 @@ export default function Dashboard() {
   const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
   const error = useSelector(getBugsError);
-  const browserHistory = useHistory();
+  const history = useHistory();
 
   let content;
   let highCount = 0;
@@ -24,14 +24,13 @@ export default function Dashboard() {
   let lowCount = 0;
 
   if (bugStatus === "loading") {
-    content = <p className="m-5 text-center"> Loading...</p>;
+    content = <p className="m-5 text-center"> Loading........</p>;
   } else if (bugStatus === "succeeded") {
     highCount = filterBugs(1);
     midCount = filterBugs(2);
     lowCount = filterBugs(3);
     content = (
       <>
-        <Navigation />
         <Row>
           <Col className="mt-5" md="4">
             <DashboardItem
@@ -62,7 +61,7 @@ export default function Dashboard() {
   }
 
   function redirect() {
-    browserHistory.push("/viewbugs");
+    history.push("/viewbugs");
   }
 
   function filterBugs(priority) {
@@ -77,5 +76,10 @@ export default function Dashboard() {
     }
   }, [bugStatus, dispatch]);
 
-  return <div className="container-sm">{content}</div>;
+  return (
+    <div className="container-sm">
+      <Navigation />
+      {content}
+    </div>
+  );
 }

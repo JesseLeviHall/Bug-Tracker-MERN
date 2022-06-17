@@ -15,7 +15,6 @@ import {
   Input,
   Row,
   Col,
-  FormFeedback,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBug } from "@fortawesome/free-solid-svg-icons";
@@ -53,6 +52,7 @@ export default function Register() {
         setLastName("");
         setUserName("");
         setPassword("");
+        history.push("/viewbugs");
       } catch (err) {
         console.log("failed to register user", err);
       } finally {

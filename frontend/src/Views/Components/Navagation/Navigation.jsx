@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { NavItem, NavLink, Nav, Button, Col } from "reactstrap";
 import { faBug, faPersonDotsFromLine } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "../../../Controllers/Reducers/authSlice";
+import { signOut, reset } from "../../../Controllers/Reducers/authSlice";
 import "./navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,9 +14,13 @@ import {
 
 export default function Navigation({ isOpen, toggle }) {
   const dispatch = useDispatch();
-  const { auth } = useSelector((state) => state);
-  function SignOut() {
-    dispatch(signOut);
+  const { user } = useSelector((state) => state.auth);
+  const history = useHistory();
+
+  function onSignOut() {
+    dispatch(signOut());
+    dispatch(reset());
+    history.push("/user/login");
   }
 
   //will need a sign out function
@@ -63,7 +67,7 @@ export default function Navigation({ isOpen, toggle }) {
             size="sm"
             className="$spacer * 3"
             color="info"
-            onClick={SignOut}>
+            onClick={onSignOut}>
             Sign Out
           </Button>
         </NavItem>
