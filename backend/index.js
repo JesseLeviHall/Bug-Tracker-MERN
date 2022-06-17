@@ -12,7 +12,7 @@ app.use(express.urlencoded({ limit: "500mb", extended: true }));
 app.use(cors());
 
 app.use("/viewbugs", viewBugs);
-app.use("/register", userRouter);
+app.use("/user", userRouter);
 
 const PORT = process.env.PORT || 3500;
 
