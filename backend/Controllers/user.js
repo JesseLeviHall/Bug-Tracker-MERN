@@ -26,6 +26,7 @@ export const signup = async (req, res) => {
 
     res.status(201).json({
       _id: result._id,
+      userName: result.userName,
       firstName: result.firstName,
       lastName: result.lastName,
       token: generateToken(result._id),
@@ -43,6 +44,7 @@ export const loginUser = async (req, res) => {
     if (user && (await bcrypt.compare(password, user.password))) {
       res.status(200).json({
         _id: user._id,
+        userName: user.userName,
         firstName: user.firstName,
         lastName: user.lastName,
         token: generateToken(user._id),
@@ -52,6 +54,14 @@ export const loginUser = async (req, res) => {
     res.status(400).json({ message: error.message });
     console.log(error);
   }
+};
+
+export const getMe = async (req, res) => {
+  const user = {
+    id: req.user._id,
+    userName: req.user.userName,
+  };
+  res.status(200).json(user);
 };
 
 const generateToken = (id) => {
