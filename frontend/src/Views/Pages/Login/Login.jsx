@@ -104,6 +104,7 @@ export default function Login() {
               <Form onSubmit={loginSubmit}>
                 <FormGroup>
                   <Input
+                    required
                     name="User Name"
                     placeholder="User Name"
                     onChange={onUserNameChanged}
