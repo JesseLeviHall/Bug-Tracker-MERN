@@ -1,5 +1,5 @@
 import express from "express";
-import auth from "../Middleware/auth.js";
+import protect from "../Middleware/auth.js";
 import {
   getBugs,
   getABug,
@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getBugs);
+router.get("/", protect, getBugs);
 router.get("/:id", getABug);
 router.post("/", createBug);
 router.patch("/:id", updateBug);
