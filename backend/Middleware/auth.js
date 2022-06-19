@@ -1,28 +1,30 @@
 import jwt from "jsonwebtoken";
+import User from "../Models/userModel.js";
 
 const secret = "test";
 
-const auth = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization.split(" ")[1];
-    const isCustomAuth = token.length < 500;
+const protect = async (req, res, next) => {
+  let token;
 
-    let decodedData;
-
-    if (token && isCustomAuth) {
-      decodedData = jwt.verify(token, secret);
-
-      req.userId = decodedData?.id;
-    } else {
-      decodedData = jwt.decode(token);
-
-      req.userId = decodedData?.sub;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, secret);
+      req.user = await User.findById(decoded.id).select("-password");
+      next();
+    } catch (error) {
+      console.log(error);
+      res.status(401);
+      throw new Error("Not Authorized Token");
     }
-
-    next();
-  } catch (error) {
-    console.log(error);
+  }
+  if (!token) {
+    res.status(401);
+    throw new Error("Not Authorized, No Token");
   }
 };
 
-export default auth;
+module.exports = { protect };
