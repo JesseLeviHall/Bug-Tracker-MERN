@@ -6,14 +6,14 @@ import {
 } from "../../../Controllers/Reducers/bugSlice";
 import Navigation from "../Navagation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 
 const EditBugForm = () => {
   const { bugId } = useParams();
   const updateThisBug = useSelector((state) => selectBugById(state, bugId));
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
@@ -23,7 +23,7 @@ const EditBugForm = () => {
   const [assigned, setAssigned] = useState("");
   const [complete, setComplete] = useState(Boolean);
 
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
+  const [setAddRequestStatus] = useState("idle");
 
   const onNameChanged = (e) => setName(e.target.value);
   const onDetailsChanged = (e) => setDetails(e.target.value);

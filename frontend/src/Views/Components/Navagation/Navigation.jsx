@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavItem, NavLink, Nav, Button, Col } from "reactstrap";
 import { faBug, faPersonDotsFromLine } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signOut, reset } from "../../../Controllers/Reducers/authSlice";
 import "./navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,8 +14,8 @@ import {
 
 export default function Navigation({ isOpen, toggle }) {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const history = useHistory();
+
+  const history = useNavigate();
 
   function onSignOut() {
     dispatch(signOut());

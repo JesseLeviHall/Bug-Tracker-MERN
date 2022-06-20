@@ -2,7 +2,7 @@ import { faBug } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -23,7 +23,7 @@ import { login } from "../../../Controllers/Reducers/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

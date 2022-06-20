@@ -70,10 +70,10 @@ const bugSlice = createSlice({
       })
 
       //update
-      .addCase(editBug.fulfilled, (state, action) => {
-        if (!action.payload?._id) {
+      .addCase(editBug.fulfilled, function (state, action) {
+        if (!action.payload._id) {
           console.log("Update could not be completed");
-          console.log(action.payload);
+
           return;
         }
         state.status = "succeeded";

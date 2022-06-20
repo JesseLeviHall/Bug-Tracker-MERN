@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -22,7 +22,7 @@ import { register } from "../../Controllers/Reducers/authSlice";
 
 export default function Register() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

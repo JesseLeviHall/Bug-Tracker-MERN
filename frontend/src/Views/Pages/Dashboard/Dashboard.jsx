@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Navigation from "../../Components/Navagation/Navigation";
@@ -12,11 +12,13 @@ import {
 } from "../../../Controllers/Reducers/bugSlice";
 
 export default function Dashboard() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   const dispatch = useDispatch();
   const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
   const error = useSelector(getBugsError);
-  const history = useHistory();
+  const history = useNavigate();
 
   let content;
   let highCount = 0;

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
 import { addBug } from "../../../Controllers/Reducers/bugSlice";
 import Navigation from "../Navagation/Navigation";
 
 export default function BugForm() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
