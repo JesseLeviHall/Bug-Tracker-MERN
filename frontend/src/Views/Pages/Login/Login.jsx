@@ -70,7 +70,7 @@ export default function Login() {
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push("/");
+      history("/");
     } catch (error) {
       console.log(error);
     }
