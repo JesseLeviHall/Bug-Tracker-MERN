@@ -7,6 +7,7 @@ import EditBugForm from "./Views/Components/Forms/EditBugForm";
 import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 import Register from "./Views/Pages/Register";
 import MyBugs from "./Views/Pages/MyBugs";
+import PrivateRoute from "./Views/Components/PrivateRoute";
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
         <Routes>
           <Route path="/user/login" exact element={<Login />} />
           <Route path="/user/register" exact element={<Register />} />
-          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/" element={<PrivateRoute />}>
+            {" "}
+            <Route path="/" exact element={<Dashboard />} />
+          </Route>
           <Route path="/viewbugs" exact element={<ViewBugPage />} />
           <Route path="/create" exact element={<BugForm />} />
           <Route path="/editbug/:bugId" exact element={<EditBugForm />} />

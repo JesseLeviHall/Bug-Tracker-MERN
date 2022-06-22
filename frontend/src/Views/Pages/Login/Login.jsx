@@ -42,7 +42,7 @@ export default function Login() {
       ).unwrap();
       setUserName("");
       setPassword("");
-      history.push("/");
+      history("/");
     } catch (err) {
       console.error("failed to sign in", err);
     }
