@@ -1,5 +1,5 @@
 import { faBug } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
@@ -51,17 +51,17 @@ export default function Login() {
     }
   };
 
-  if (status === "succeeded") {
-    history("/");
-  }
-
-  if (status === "pending") {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <p>Unable to Log in</p>;
-  }
+  useEffect(() => {
+    if (status === "succeeded") {
+      history("/");
+    }
+    if (status === "pending") {
+      return <Spinner />;
+    }
+    if (error) {
+      return <p>Unable to Log in</p>;
+    }
+  }, [status, error, history]);
 
   /* const googleSuccess = async (res) => {
     const result = res?.profileObj;
