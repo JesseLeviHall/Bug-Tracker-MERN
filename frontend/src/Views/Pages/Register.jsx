@@ -52,7 +52,7 @@ export default function Register() {
         setLastName("");
         setUserName("");
         setPassword("");
-        history.push("/viewbugs");
+        history("/viewbugs");
       } catch (err) {
         console.log("failed to register user", err);
       } finally {
