@@ -12,7 +12,7 @@ import {
   faMapMarkedAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navigation({ isOpen, toggle }) {
+export default function Navigation() {
   const dispatch = useDispatch();
 
   const history = useNavigate();
@@ -20,7 +20,7 @@ export default function Navigation({ isOpen, toggle }) {
   function onSignOut() {
     dispatch(signOut());
     dispatch(reset());
-    history.push("/user/login");
+    history("/user/login");
   }
 
   //will need a sign out function
