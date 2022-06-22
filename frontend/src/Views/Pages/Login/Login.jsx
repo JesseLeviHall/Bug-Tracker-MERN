@@ -1,6 +1,6 @@
 import { faBug } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -17,6 +17,7 @@ import {
   Input,
   Row,
   Col,
+  Spinner,
   FormFeedback,
 } from "reactstrap";
 import { login } from "../../../Controllers/Reducers/authSlice";
@@ -31,6 +32,8 @@ export default function Login() {
   const onUserNameChanged = (e) => setUserName(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
 
+  const { status, error } = useSelector((state) => state.auth);
+
   const loginSubmit = (e) => {
     e.preventDefault();
     try {
@@ -43,10 +46,22 @@ export default function Login() {
       setUserName("");
       setPassword("");
       history("/");
-    } catch (err) {
-      console.error("failed to sign in", err);
+    } catch (error) {
+      console.log("failed to sign in", error);
     }
   };
+
+  if (status === "succeeded") {
+    history("/");
+  }
+
+  if (status === "pending") {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <p>Unable to Log in</p>;
+  }
 
   /* const googleSuccess = async (res) => {
     const result = res?.profileObj;

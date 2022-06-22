@@ -65,10 +65,12 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.users = action.payload;
+        console.log(state.status);
+        state.user = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
         state.status = "failed";
+        console.log(state.status);
         state.error = action.error.message;
       })
       .addCase(signOut.fulfilled, (state) => {

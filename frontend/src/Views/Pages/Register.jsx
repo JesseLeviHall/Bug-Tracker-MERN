@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -23,6 +23,8 @@ import { register } from "../../Controllers/Reducers/authSlice";
 export default function Register() {
   const dispatch = useDispatch();
   const history = useNavigate();
+
+  const { status } = useSelector((state) => state.auth);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -60,6 +62,10 @@ export default function Register() {
       }
     }
   };
+
+  if (status === "succeeded") {
+    history("/");
+  }
 
   return (
     <div className="container-as body">

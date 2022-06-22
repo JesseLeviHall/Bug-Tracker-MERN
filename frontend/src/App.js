@@ -19,24 +19,24 @@ function App() {
 
           <Route path="/" element={<PrivateRoute />}>
             {" "}
-            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
           </Route>
 
           <Route path="/viewbugs" element={<PrivateRoute />}>
             {" "}
-            <Route path="/viewbugs" exact element={<ViewBugPage />} />
+            <Route path="/viewbugs" element={<ViewBugPage />} />
           </Route>
 
           <Route path="/create" element={<PrivateRoute />}>
-            <Route path="/create" exact element={<BugForm />} />{" "}
+            <Route path="/create" element={<BugForm />} />{" "}
           </Route>
 
           <Route path="/editbug/:bugId" element={<PrivateRoute />}>
-            <Route path="/editbug/:bugId" exact element={<EditBugForm />} />{" "}
+            <Route path="/editbug/:bugId" element={<EditBugForm />} />{" "}
           </Route>
 
           <Route path="/mybugs" element={<PrivateRoute />}>
-            <Route path="/mybugs" exact element={<MyBugs />} />{" "}
+            <Route path="/mybugs" element={<MyBugs />} />{" "}
           </Route>
         </Routes>
       </div>

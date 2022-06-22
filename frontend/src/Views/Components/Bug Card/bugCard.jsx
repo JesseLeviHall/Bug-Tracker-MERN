@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Col,
   ListGroupItem,
@@ -12,6 +13,17 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 export default function bugCard(props) {
+  const { user } = useSelector((state) => state.auth);
+  function Editbutton() {
+    if (user.role === "admin") {
+      return (
+        <Button outline color="info" className="ms-3 mt-3" size="sm">
+          <Link to={`/editbug/${props.bug._id}`}>Edit Bug</Link>
+        </Button>
+      );
+    }
+  }
+
   return (
     <Col className="mt-5" md="4">
       <Card className="mt-2">
@@ -48,9 +60,7 @@ export default function bugCard(props) {
               Webpage: <span className="ms-2">{props.bug.webpage}</span>
             </ListGroupItem>
           </ListGroup>
-          <Button outline color="info" className="ms-3 mt-3" size="sm">
-            <Link to={`/editbug/${props.bug._id}`}>Edit Bug</Link>
-          </Button>
+          <Editbutton />
         </CardBody>
       </Card>
     </Col>
