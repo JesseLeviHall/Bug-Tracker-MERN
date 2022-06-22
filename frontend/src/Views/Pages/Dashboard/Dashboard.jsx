@@ -63,7 +63,7 @@ export default function Dashboard() {
   }
 
   function redirect() {
-    history.push("/viewbugs");
+    history("/viewbugs");
   }
 
   function filterBugs(priority) {

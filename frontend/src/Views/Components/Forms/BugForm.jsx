@@ -38,7 +38,7 @@ export default function BugForm() {
         setSteps("");
         setPriority("");
         setWebpage("");
-        history.push("/viewbugs");
+        history("/viewbugs");
       } catch (err) {
         console.error("Failed to save the bug", err);
       } finally {

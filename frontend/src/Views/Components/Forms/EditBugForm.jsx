@@ -37,7 +37,7 @@ const EditBugForm = () => {
     try {
       setAddRequestStatus("pending");
       dispatch(deleteBug(updateThisBug._id)).unwrap();
-      history.push("/viewbugs");
+      history("/viewbugs");
     } catch (err) {
       console.error("Failed to delete the bug", err);
     } finally {
