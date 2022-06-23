@@ -23,8 +23,6 @@ const EditBugForm = () => {
   const [assigned, setAssigned] = useState("");
   const [complete, setComplete] = useState(Boolean);
 
-  const [setAddRequestStatus] = useState("idle");
-
   const onNameChanged = (e) => setName(e.target.value);
   const onDetailsChanged = (e) => setDetails(e.target.value);
   const onStepsChanged = (e) => setSteps(e.target.value);
@@ -35,20 +33,16 @@ const EditBugForm = () => {
 
   const onDeleteBugClicked = () => {
     try {
-      setAddRequestStatus("pending");
       dispatch(deleteBug(updateThisBug._id)).unwrap();
       history("/viewbugs");
     } catch (err) {
       console.error("Failed to delete the bug", err);
-    } finally {
-      setAddRequestStatus("idle");
     }
   };
 
   const formSubmit = (e) => {
     e.preventDefault();
     try {
-      setAddRequestStatus("pending");
       dispatch(
         editBug({
           id: updateThisBug._id,
@@ -67,10 +61,9 @@ const EditBugForm = () => {
       setPriority("");
       setWebpage("");
       setAssigned("");
+      history("/viewbugs");
     } catch (err) {
       console.error("Failed to save the update", err);
-    } finally {
-      setAddRequestStatus("idle");
     }
   };
 

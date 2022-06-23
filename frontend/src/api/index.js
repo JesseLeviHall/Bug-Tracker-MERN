@@ -9,6 +9,16 @@ export const fetchBugs = async () => {
   return response.data;
 };
 
+export const fetchUserBugs = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await API.get(config);
+  return response.data;
+};
+
 export const fetchBug = async (id) => {
   const response = await API.get(`/viewbugs/${id}`);
   return response.data;

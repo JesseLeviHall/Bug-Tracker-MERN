@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createSelector,
+} from "@reduxjs/toolkit";
 import * as api from "../../api/index.js";
 
 const initialState = {
@@ -101,6 +105,10 @@ export const getBugsStatus = (state) => state.bugs.status;
 export const getBugsError = (state) => state.bugs.error;
 export const selectBugById = (state, bugId) =>
   state.bugs.bugs.find((bug) => bug._id === bugId);
+export const selectBugsByUser = createSelector(
+  [selectAllBugs, (state, userName) => userName],
+  (bugs, userName) => bugs.filter((bug) => bug.assigned === userName)
+);
 
 export const { reset } = bugSlice.actions;
 
