@@ -38,7 +38,7 @@ export default function bugCard(props) {
             <ListGroupItem>
               Status:
               <span className="ms-2">
-                {props.bug.completed === false ? "Resolved" : "Active"}
+                {props.bug.complete ? "Resolved" : "Active"}
               </span>
             </ListGroupItem>
             <ListGroupItem>
