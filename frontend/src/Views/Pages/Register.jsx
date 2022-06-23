@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -11,7 +11,6 @@ import {
   Form,
   FormGroup,
   Label,
-  Spinner,
   Navbar,
   Input,
   Row,
@@ -24,8 +23,6 @@ import { register } from "../../Controllers/Reducers/authSlice";
 export default function Register() {
   const dispatch = useDispatch();
   const history = useNavigate();
-
-  const { status, error } = useSelector((state) => state.auth);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

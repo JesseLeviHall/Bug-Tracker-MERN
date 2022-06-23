@@ -12,8 +12,6 @@ import {
 } from "../../../Controllers/Reducers/bugSlice";
 
 export default function Dashboard() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
   const dispatch = useDispatch();
   const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
