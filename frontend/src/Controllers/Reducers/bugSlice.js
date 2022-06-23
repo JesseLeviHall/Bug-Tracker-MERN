@@ -34,6 +34,17 @@ export const editBug = createAsyncThunk(
   }
 );
 
+export const markComplete = createAsyncThunk(
+  "viewbugs/markComplete",
+  async (id) => {
+    try {
+      return await api.markComplete(id);
+    } catch (err) {
+      return err.message;
+    }
+  }
+);
+
 export const deleteBug = createAsyncThunk("viewbugs/deleteBug", async (id) => {
   try {
     return await api.deleteBug(id);
@@ -79,6 +90,14 @@ const bugSlice = createSlice({
         state.status = "succeeded";
         state.bugs = state.bugs.map((bug) =>
           bug._id === action.payload._id ? action.payload : bug
+        );
+      })
+
+      //mark complete
+      .addCase(markComplete.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.bugs.map((bug) =>
+          bug._id === action.payload._id ? (bug.complete = true) : bug
         );
       })
 
