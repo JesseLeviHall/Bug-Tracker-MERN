@@ -23,7 +23,6 @@ export default function Navigation() {
     history("/user/login");
   }
 
-  //will need a sign out function
   return (
     <div className="container-sm">
       <Col className="text-center mt-5 mb-5 text-nowrap">

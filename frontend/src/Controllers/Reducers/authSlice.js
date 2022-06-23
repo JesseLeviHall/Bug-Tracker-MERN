@@ -12,7 +12,6 @@ const initialState = {
 export const register = createAsyncThunk(
   "/register, registerUser",
   async (newUser) => {
-    console.log(newUser);
     try {
       return await api.registerUser(newUser);
     } catch (err) {
@@ -29,16 +28,9 @@ export const login = createAsyncThunk("/login, userLogin", async (userData) => {
   }
 });
 
-export const signOut = createAsyncThunk(
-  "signOut, userSignOut",
-  async (user) => {
-    try {
-      return await api.userLogOut(user);
-    } catch (err) {
-      return err.message;
-    }
-  }
-);
+export const signOut = createAsyncThunk("signOut, userSignOut", async () => {
+  await api.userLogOut();
+});
 
 const authSlice = createSlice({
   name: "auth",

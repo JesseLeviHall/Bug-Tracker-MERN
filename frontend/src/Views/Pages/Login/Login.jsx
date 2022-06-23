@@ -1,6 +1,6 @@
 import { faBug } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -19,7 +19,7 @@ import {
   Col,
   FormFeedback,
 } from "reactstrap";
-import { login } from "../../../Controllers/Reducers/authSlice";
+import { login, reset } from "../../../Controllers/Reducers/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -30,6 +30,18 @@ export default function Login() {
 
   const onUserNameChanged = (e) => setUserName(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
+
+  const { user, err, status } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (err) {
+      console.log(err);
+    }
+    if (status === "succeeded") {
+      history("/");
+      dispatch(reset());
+    }
+  }, [user, err, history, dispatch]);
 
   const loginSubmit = (e) => {
     e.preventDefault();
