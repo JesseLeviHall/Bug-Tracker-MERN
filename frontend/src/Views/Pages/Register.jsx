@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -11,6 +11,7 @@ import {
   Form,
   FormGroup,
   Label,
+  Spinner,
   Navbar,
   Input,
   Row,
@@ -24,29 +25,24 @@ export default function Register() {
   const dispatch = useDispatch();
   const history = useNavigate();
 
-  const { status } = useSelector((state) => state.auth);
+  const { status, error } = useSelector((state) => state.auth);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
-
   const onFirstNameChanged = (e) => setFirstName(e.target.value);
   const onLastNameChanged = (e) => setLastName(e.target.value);
   const onUserNameChanged = (e) => setUserName(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
 
-  const canSave =
-    [firstName, lastName, userName, password].every(Boolean) &&
-    addRequestStatus === "idle";
+  const canSave = [firstName, lastName, userName, password].every(Boolean);
 
   const registerSubmit = (e) => {
     e.preventDefault();
     if (canSave) {
       try {
-        setAddRequestStatus("pending");
         dispatch(
           register({ firstName, lastName, userName, password })
         ).unwrap();
@@ -54,18 +50,12 @@ export default function Register() {
         setLastName("");
         setUserName("");
         setPassword("");
-        history("/viewbugs");
-      } catch (err) {
-        console.log("failed to register user", err);
-      } finally {
-        setAddRequestStatus("idle");
+        history("/");
+      } catch (error) {
+        console.log("failed to register user", error);
       }
     }
   };
-
-  if (status === "succeeded") {
-    history("/");
-  }
 
   return (
     <div className="container-as body">
