@@ -8,14 +8,16 @@ import Dashboard from "./Views/Pages/Dashboard/Dashboard";
 import Register from "./Views/Pages/Register";
 import MyBugs from "./Views/Pages/MyBugs";
 import PrivateRoute from "./Views/Components/PrivateRoute";
+import PublicForm from "./Views/Pages/PublicForm/PublicForm";
 
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="container-fluid full-width has-inner">
         <Routes>
           <Route path="/user/login" exact element={<Login />} />
           <Route path="/user/register" exact element={<Register />} />
+          <Route path="/publicform" exact element={<PublicForm />} />
 
           <Route path="/" element={<PrivateRoute />}>
             {" "}
