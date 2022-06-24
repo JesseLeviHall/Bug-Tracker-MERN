@@ -12,20 +12,19 @@ import PublicForm from "./Views/Pages/PublicForm/PublicForm";
 
 function App() {
   return (
-    <Router>
-      <div className="container-fluid full-width has-inner">
+    <div className="container-fluid full-width ">
+      <Router>
         <Routes>
-          <Route path="/user/login" exact element={<Login />} />
-          <Route path="/user/register" exact element={<Register />} />
           <Route path="/publicform" exact element={<PublicForm />} />
 
+          <Route path="/user/login" exact element={<Login />} />
+          <Route path="/user/register" exact element={<Register />} />
+
           <Route path="/" element={<PrivateRoute />}>
-            {" "}
             <Route path="/" element={<Dashboard />} />
           </Route>
 
           <Route path="/viewbugs" element={<PrivateRoute />}>
-            {" "}
             <Route path="/viewbugs" element={<ViewBugPage />} />
           </Route>
 
@@ -41,8 +40,8 @@ function App() {
             <Route path="/mybugs" element={<MyBugs />} />{" "}
           </Route>
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

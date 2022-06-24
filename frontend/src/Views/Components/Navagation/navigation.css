@@ -1,8 +1,9 @@
-h1 {
-  font-size: 38pt;
-  
-}
 
 .form-title {
   font-size: 24pt;
+}
+
+#navtitle {
+  font-size: 38pt;
+  color: rgb(74, 0, 0);
 }

@@ -26,7 +26,7 @@ export default function Navigation() {
   return (
     <div className="container-sm">
       <Col className="text-center mt-5 mb-5 text-nowrap">
-        <h1>
+        <h1 id="navtitle">
           <FontAwesomeIcon icon={faBug} className="pe-4" />
           Bug Tracker
         </h1>

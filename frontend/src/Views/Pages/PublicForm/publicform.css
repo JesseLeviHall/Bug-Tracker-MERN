@@ -1,6 +1,68 @@
 #container {
-  background: cornflowerblue;
-  padding-left: 0;
-  padding-right: 0;
+  margin-top: 80px;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../../../img/back2.jpg") ;
+  background-size: cover;
+  background-position: fixed;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#message-container {
+  backdrop-filter: blur(10px);
+  width: 900px;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.contact-info {
+  background-color: #a2a2a2;
+  flex: 0 1 40%;
+  border-radius: 15px;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+h1 {
+  backdrop-filter: blur(5px);
+  font-weight: 600;
+  color: whitesmoke;
+  border-radius: 20px;
+}
+
+h2 {
+  max-width: 800px;
+  backdrop-filter: blur(5px);
+  font-size: 1.8rem;
+  color: whitesmoke;
+  border-radius: 20px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+p {
+  font-weight: 300;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+i {
+  font-style: italic;
 }
