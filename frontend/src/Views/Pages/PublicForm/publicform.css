@@ -7,7 +7,7 @@
   text-align: center;
   max-height: 1800px;
   width: 100%;
-  background-image: url("../../../img/back2.jpg") ;
+  background-image: url("../../../img/back3.jpg") ;
   background-size: cover;
   background-position: fixed;
   border: 1px solid black;
@@ -15,9 +15,10 @@
 }
 
 #message-container {
-  backdrop-filter: blur(10px);
-  width: 900px;
-  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  max-width: 900px;
+  margin-bottom: 3rem;
+  border-radius: 25px;
   overflow: hidden;
   padding: 10px;
   display: flex;
@@ -26,15 +27,17 @@
 }
 
 .contact-info {
-  background-color: #a2a2a2;
+  background-color: linear-gradient(89.97deg, #f2eef7 1.84%, #ffd891 102.67%);
   flex: 0 1 40%;
   border-radius: 15px;
-  max-height: 300px;
+  max-height: 320px;
+  backdrop-filter: blur(5px);
   padding: 40px;
   color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  margin-top: 68px;
 }
 
 h1 {
@@ -73,7 +76,6 @@ i {
   font-style: italic;
   
 }
-
 
 Col {
   display: flex;

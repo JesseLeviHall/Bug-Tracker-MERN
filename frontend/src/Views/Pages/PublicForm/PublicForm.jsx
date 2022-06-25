@@ -19,8 +19,8 @@ const PublicForm = () => {
             <i className="icon">-Dev Team</i>
           </div>
         </div>
-        <Form className="ms-5">
-          <Row>
+        <Form className="ms-5 mt-4">
+          <Row className="mt-5">
             <FormGroup>
               <Input
                 type="text"
@@ -32,7 +32,7 @@ const PublicForm = () => {
               <Input
                 type="textarea"
                 name="details"
-                placeholder="Please provide details"
+                placeholder="Please provide a description"
               />
             </FormGroup>
           </Row>
@@ -43,7 +43,7 @@ const PublicForm = () => {
                 id="steps"
                 name="steps"
                 type="textarea"
-                placeholder="Steps to recreate the issue"
+                placeholder="Steps to re-create the issue"
               />
             </Col>
           </FormGroup>
@@ -52,16 +52,14 @@ const PublicForm = () => {
               <Input
                 id="webpage"
                 name="webpage"
-                placeholder="What website/webpage is the problem?"></Input>
+                placeholder="What website/webpage does this happen?"></Input>
             </Col>
           </FormGroup>
           <FormGroup className="sm-ms-4">
-            <Col xs={10}>
-              <Button className="mt-4 mb-5" color="info" type="submit">
-                <FontAwesomeIcon icon={faShareFromSquare} />
-                Submit
-              </Button>
-            </Col>
+            <Button className="mt-4 mb-5" color="info" type="submit">
+              <FontAwesomeIcon icon={faShareFromSquare} />
+              Submit
+            </Button>
           </FormGroup>
         </Form>
       </div>
