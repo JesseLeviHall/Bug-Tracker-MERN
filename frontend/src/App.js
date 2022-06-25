@@ -9,6 +9,7 @@ import Register from "./Views/Pages/Register";
 import MyBugs from "./Views/Pages/MyBugs";
 import PrivateRoute from "./Views/Components/PrivateRoute";
 import PublicForm from "./Views/Pages/PublicForm/PublicForm";
+import Thankyou from "./Views/Pages/PublicForm/Thankyou";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/publicform" exact element={<PublicForm />} />
-
+          <Route path="/thankyou" exact element={<Thankyou />} />
           <Route path="/user/login" exact element={<Login />} />
           <Route path="/user/register" exact element={<Register />} />
 
