@@ -2,15 +2,13 @@ import React from "react";
 import "./publicform.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { Form, Row, FormGroup, Input, Col, Button } from "reactstrap";
 
 const PublicForm = () => {
   return (
     <div id="container" className="container-sm ">
       <h1 className="mt-5">Did You Experience A Website Issue?</h1>
-      <h2 className=" mb-5">
-        We appologize for the problem. Please let us know what happened so we
-        can fix it.
-      </h2>
+      <h2 className=" mb-5">We appologize for the problem.</h2>
       <div id="message-container">
         <div className="contact-info">
           <h4>Send Us Information</h4>
@@ -21,7 +19,51 @@ const PublicForm = () => {
             <i className="icon">-Dev Team</i>
           </div>
         </div>
-        <form></form>
+        <Form className="ms-5">
+          <Row>
+            <FormGroup>
+              <Input
+                type="text"
+                name="name"
+                placeholder="What is the problem?"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="textarea"
+                name="details"
+                placeholder="Please provide details"
+              />
+            </FormGroup>
+          </Row>
+          <FormGroup className="sm-ms-4">
+            <Col sm={12}>
+              <Input
+                required
+                id="steps"
+                name="steps"
+                type="textarea"
+                placeholder="Steps to recreate the issue"
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup className="sm-ms-4">
+            <Col sm={12}>
+              <Input
+                id="webpage"
+                name="webpage"
+                placeholder="What website/webpage is the problem?"></Input>
+            </Col>
+          </FormGroup>
+          <FormGroup className="sm-ms-4">
+            <Col xs={10}>
+              <Button className="mt-4 mb-5" color="info" type="submit">
+                <FontAwesomeIcon icon={faShareFromSquare} />
+                Submit
+              </Button>
+            </Col>
+          </FormGroup>
+        </Form>
       </div>
     </div>
   );
