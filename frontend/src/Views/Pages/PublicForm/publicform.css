@@ -1,83 +1,80 @@
 #container {
-  margin-top: 80px;
-  overflow-x: hidden;
-  display: flex;
-  opacity: 95%;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-height: 1800px;
-  width: 100%;
-  background-image: url("../../../img/back3.jpg") ;
-  background-size: cover;
-  background-position: fixed;
-  border: 1px solid black;
-  border-radius: 5px;
+  height: 100vh;
+  margin:0;
+  padding:0;
 }
 
 #message-container {
-  backdrop-filter: blur(5px);
-  max-width: 900px;
-  margin-bottom: 3rem;
-  border-radius: 25px;
-  overflow: hidden;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  
+  min-height: 50vh;
 }
 
-.contact-info {
-  background: rgba(6, 67, 146, 0.3);
-  flex: 0 1 40%;
-  border-radius: 15px;
-  max-height: 320px;
-  backdrop-filter: blur(45px);
-  padding: 40px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  margin-top: 68px;
+#card {
+  height: 300px;
+  margin-top: 46px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .9);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+}
+ 
+#card2 {
+  margin-top: 46px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .9);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, .5);
+}
+
+#cardheader {
+  margin-top: 30px;
+  padding: 0;
+  text-align: center;
+  font-size: 24pt;
+}
+
+#cardtext {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 35px ; 
+  margin-right: 35px ;
+  font-size: 18pt;
+}
+
+.icon-text {
+  margin-top: 30px;
+  text-align: center;
+  margin: auto;
 }
 
 #h1 {
-  backdrop-filter: blur(5px);
-  font-weight: 600;
-  color: whitesmoke;
-  border-radius: 20px;
   text-shadow: -1px 2px 7px rgba(0, 0, 0, 0.64);
+  margin-top: 30px;
+  padding: 0;
+  text-align: center;
+  font-size: 32pt;
+  color: rgb(244, 230, 230)
 }
 
 #h2 {
-  max-width: 800px;
-  backdrop-filter: blur(5px);
-  font-size: 1.8rem;
-  color: whitesmoke;
-  border-radius: 20px;
   text-shadow: -1px 2px 7px rgba(0, 0, 0, 0.64);
+  margin-top: 15px;
+  padding: 0;
+  text-align: center;
+  font-size: 20pt;
+  color: rgb(244, 230, 230)
 }
 
-#h4 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  font-weight: 500;
-  
+#login-box-a {
+  background: transparent;
 }
 
-#p {
-  font-weight: 300;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 16pt;
-  
+#login-box-a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+  0 0 25px #03e9f4,
+  0 0 50px #03e9f4,
+  0 0 100px #03e9f4;
 }
 
-i {
-  font-style: italic;
-  
-}
-
-Col {
-  display: flex;
-}

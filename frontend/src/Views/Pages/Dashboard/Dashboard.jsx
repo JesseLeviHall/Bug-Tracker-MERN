@@ -30,7 +30,7 @@ export default function Dashboard() {
     midCount = filterBugs(2);
     lowCount = filterBugs(3);
     content = (
-      <>
+      <div style={{ height: "100vh" }}>
         <Row>
           <Col className="mt-5" md="4">
             <DashboardItem
@@ -54,7 +54,7 @@ export default function Dashboard() {
             />
           </Col>
         </Row>
-      </>
+      </div>
     );
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;

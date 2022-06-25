@@ -1,27 +1,24 @@
 import React from "react";
 import "./publicform.css";
+import { Row, Card, CardHeader, CardFooter, CardText } from "reactstrap";
 
 const Thankyou = () => {
   return (
-    <div id="container" className="container-sm ">
-      <h1 id="h1" className="mt-5">
-        Did You Experience A Website Issue?
-      </h1>
-      <h2 id="h2" className=" mb-5">
-        We appologize for the problem.
-      </h2>
-      <div id="message-container">
-        <div className="contact-info">
-          <p id="p">
-            Thank you very much for reporting the issue to us so we can resolve
-            it as soon as possible. have a great rest of your day
-          </p>
-          <div className="icon-text">
+    <div id="container" className="container-fluid">
+      <Row className="m-5">
+        <Card color="info" outline id="card2">
+          <CardHeader id="cardheader" tag="h4">
+            Thank You
+          </CardHeader>
+          <CardText id="cardtext">
+            Thank for reporting the issue so we can resolve it as soon as
+            possible. <br /> have a great rest of your day
+          </CardText>
+          <CardFooter className="icon-text mb-3">
             <i className="icon">-Dev Team</i>
-          </div>
-        </div>
-        <p id="p">HERE</p>
-      </div>
+          </CardFooter>
+        </Card>
+      </Row>
     </div>
   );
 };

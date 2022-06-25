@@ -26,7 +26,7 @@ export default function bugCard(props) {
   return (
     <Col className="mt-5" md="4">
       <Card className="mt-2">
-        <CardTitle className="mt-2 text-center" tag="h5">
+        <CardTitle className="mt-2 p-1 text-center" tag="h5">
           {props.bug.name}
         </CardTitle>
         <CardBody>
