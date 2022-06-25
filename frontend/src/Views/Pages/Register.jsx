@@ -72,25 +72,31 @@ export default function Register() {
           <Card
             className="sm-4"
             style={{
-              backgroundColor: " #fee7e7 ",
+              background: "linear-gradient(#141e30, #243b55)",
               borderColor: "#000000",
+              borderRadius: "20px",
             }}>
             <CardBody>
-              <CardTitle className="text-center" tag="h1">
+              <CardTitle
+                style={{ color: "#fff" }}
+                className="text-center"
+                tag="h1">
                 Bug Tracker
               </CardTitle>
-              <CardText className="text-center mb-5">
+              <CardText style={{ color: "#fff" }} className="text-center mb-5">
                 Virtual bug tracker for managing website issues
               </CardText>
               <CardSubtitle
                 className="text-center mb-3"
                 tag="h5"
-                style={{ fontWeight: "bold" }}>
+                style={{ fontWeight: "bold", color: "#fff" }}>
                 Register:
               </CardSubtitle>
               <Form onSubmit={registerSubmit}>
                 <FormGroup>
-                  <Label for="fisrtName">First Name:</Label>
+                  <Label style={{ color: "#fff" }} for="fisrtName">
+                    First Name:
+                  </Label>
                   <Input
                     value={firstName}
                     onChange={onFirstNameChanged}
@@ -100,7 +106,9 @@ export default function Register() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="lastName">Last Name:</Label>
+                  <Label style={{ color: "#fff" }} for="lastName">
+                    Last Name:
+                  </Label>
                   <Input
                     value={lastName}
                     onChange={onLastNameChanged}
@@ -110,7 +118,9 @@ export default function Register() {
                   />
                 </FormGroup>
                 <FormGroup className="mt-5">
-                  <Label for="userName">Create User Name:</Label>
+                  <Label style={{ color: "#fff" }} for="userName">
+                    Create User Name:
+                  </Label>
                   <Input
                     value={userName}
                     onChange={onUserNameChanged}
@@ -120,7 +130,9 @@ export default function Register() {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="password">Create Password:</Label>
+                  <Label style={{ color: "#fff" }} for="password">
+                    Create Password:
+                  </Label>
                   <Input
                     value={password}
                     onChange={onPasswordChanged}

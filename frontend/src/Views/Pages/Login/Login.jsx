@@ -12,14 +12,13 @@ import {
   CardSubtitle,
   Form,
   FormGroup,
-  Label,
   Navbar,
   Input,
   Row,
   Col,
-  FormFeedback,
 } from "reactstrap";
 import { login, reset } from "../../../Controllers/Reducers/authSlice";
+import "./login.css";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -79,7 +78,7 @@ export default function Login() {
     */
 
   return (
-    <div className="container-as body">
+    <div className="container-fluid full-width">
       <Navbar>
         {" "}
         <FontAwesomeIcon icon={faBug} className="mr-2" />
@@ -97,20 +96,24 @@ export default function Login() {
             className="sm-4"
             outline
             style={{
-              backgroundColor: "#fee7e7",
+              background: "linear-gradient(#141e30, #243b55)",
               borderColor: "#000000",
+              borderRadius: "20px",
             }}>
             <CardBody>
-              <CardTitle className="text-center" tag="h1">
+              <CardTitle
+                style={{ color: "#fff" }}
+                className="text-center"
+                tag="h1">
                 Bug Tracker
               </CardTitle>
-              <CardText className="text-center mb-5">
+              <CardText style={{ color: "#fff" }} className="text-center mb-5">
                 Virtual bug tracker for managing website issues
               </CardText>
               <CardSubtitle
                 className="text-center mb-3"
                 tag="h5"
-                style={{ fontWeight: "bold" }}>
+                style={{ fontWeight: "bold", color: "#fff" }}>
                 Sign In:
               </CardSubtitle>
               <Form onSubmit={loginSubmit}>
@@ -121,7 +124,6 @@ export default function Login() {
                     placeholder="User Name"
                     onChange={onUserNameChanged}
                     value={userName}></Input>
-                  <FormFeedback>Something</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                   <Input
@@ -131,18 +133,14 @@ export default function Login() {
                     placeholder="Password"
                     onChange={onPasswordChanged}
                     value={password}></Input>
-                  <FormFeedback>Something</FormFeedback>
                 </FormGroup>
-                <Input type="checkbox" className="custom-control-input" />
-                <Label
-                  className="custom-control-label ms-2"
-                  htmlFor="customCheck1">
-                  Remember me
-                </Label>
+
                 <Button className="mt-2" block color="info" type="submit">
                   Login
                 </Button>
-                <p className="forgot-password text-center mt-4">
+                <p
+                  style={{ color: "#fff" }}
+                  className="forgot-password text-center mt-4">
                   New? <Link to={"/user/register"}>Sign-Up</Link>
                 </p>
               </Form>
