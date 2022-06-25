@@ -48,7 +48,7 @@ export default function Dashboard() {
 
   function filterBugs(priority) {
     return bugs.filter((bug) => {
-      return bug.priority === priority;
+      return bug.priority === priority && bug.complete === false;
     });
   }
 

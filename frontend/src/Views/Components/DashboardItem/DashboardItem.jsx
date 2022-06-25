@@ -10,7 +10,7 @@ export default function DashboardItem(props) {
         Bugs With Priority {level}
       </CardTitle>
       <CardText className="text-center justify-content-center p-3">
-        Bug Count: {props.count} <br />
+        Active Bug Count: {props.count} <br />
       </CardText>
     </Card>
   );
