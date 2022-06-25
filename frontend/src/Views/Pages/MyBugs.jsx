@@ -27,9 +27,14 @@ export default function MyBugs() {
 
   if (myBugs.length === 0) {
     return (
-      <h2 style={{ color: "#fff" }} className="text-center mt-5">
-        There are no bugs assigned for you to work on right now, nice!
-      </h2>
+      <div className="container-sm">
+        <Navigation />
+        <h2
+          style={{ height: "100vh", color: "#fff" }}
+          className="text-center mt-5">
+          No bugs are assigned for you to work on right now
+        </h2>
+      </div>
     );
   }
 

@@ -38,7 +38,6 @@ export default function Login() {
     }
     if (status === "succeeded") {
       history("/");
-      dispatch(reset());
     }
   }, [user, err, history, dispatch]);
 
@@ -78,7 +77,7 @@ export default function Login() {
     */
 
   return (
-    <div className="container-fluid full-width">
+    <div className="container-fluid full-width" style={{ height: "100vh" }}>
       <Navbar>
         {" "}
         <FontAwesomeIcon icon={faBug} className="mr-2" />

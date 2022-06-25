@@ -12,7 +12,7 @@ const Thankyou = () => {
           </CardHeader>
           <CardText id="cardtext">
             Thank for reporting the issue so we can resolve it as soon as
-            possible. <br /> have a great rest of your day
+            possible. <br /> <br /> have a great rest of your day
           </CardText>
           <CardFooter className="icon-text mb-3">
             <i className="icon">-Dev Team</i>
