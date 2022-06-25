@@ -81,7 +81,10 @@ const EditBugForm = () => {
       <h1 className="form-title mb-4 mt-5 text-center">
         Form To Update and Assign
       </h1>
-      <Form className="offset-md-2" onSubmit={formSubmit}>
+      <Form
+        style={{ color: "#fff" }}
+        className="offset-md-2"
+        onSubmit={formSubmit}>
         <FormGroup>
           <Label for="Name">Bug Name:</Label>
           <Col sm={9}>

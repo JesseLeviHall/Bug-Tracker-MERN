@@ -37,7 +37,9 @@ export default function MyBugs() {
   return (
     <div className="container-sm">
       <Navigation />
-      <h2 className="text-center mt-5">Bugs I'm working on</h2>
+      <h2 style={{ color: "#fff" }} className="text-center mt-5">
+        Bugs I'm working on
+      </h2>
       <Row>{content}</Row>
     </div>
   );

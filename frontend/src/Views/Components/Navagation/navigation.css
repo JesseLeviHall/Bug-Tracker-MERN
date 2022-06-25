@@ -1,9 +1,16 @@
 
 .form-title {
   font-size: 24pt;
+  color: #fff;
+  text-shadow: -1px 2px 7px rgba(0, 0, 0, 0.64);
 }
 
 #navtitle {
   font-size: 38pt;
-  color: rgb(74, 0, 0);
+  color: rgb(71, 3, 180);
+  text-shadow: -1px 2px 7px rgba(0, 0, 0, 0.64);
+}
+
+.FontAwesomeIcon {
+  text-shadow: -1px 2px 7px rgba(0, 0, 0, 0.64);
 }

@@ -51,7 +51,10 @@ export default function BugForm() {
     <div className="container-sm">
       <Navigation />
       <h1 className="form-title mb-4 mt-5 text-center">Create New Bug</h1>
-      <Form className="offset-md-2" onSubmit={formSubmit}>
+      <Form
+        style={{ color: "#fff" }}
+        className="offset-md-2"
+        onSubmit={formSubmit}>
         <FormGroup>
           <Label for="Name">Bug Name:</Label>
           <Col sm={9}>

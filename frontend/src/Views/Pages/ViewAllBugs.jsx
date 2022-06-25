@@ -34,7 +34,9 @@ export default function ViewBugs() {
   return (
     <div className="container-sm">
       <Navigation />
-      <h2 className="text-center mt-5">These are all the bugs</h2>
+      <h2 style={{ color: "#fff" }} className="text-center mt-5">
+        These are all the bugs
+      </h2>
 
       <Row>{content}</Row>
     </div>

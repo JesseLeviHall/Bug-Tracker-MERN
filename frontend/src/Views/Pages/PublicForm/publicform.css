@@ -2,6 +2,7 @@
   margin-top: 80px;
   overflow-x: hidden;
   display: flex;
+  opacity: 95%;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -27,11 +28,11 @@
 }
 
 .contact-info {
-  background-color: linear-gradient(89.97deg, #f2eef7 1.84%, #ffd891 102.67%);
+  background: rgba(6, 67, 146, 0.3);
   flex: 0 1 40%;
   border-radius: 15px;
   max-height: 320px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(45px);
   padding: 40px;
   color: white;
   display: flex;
