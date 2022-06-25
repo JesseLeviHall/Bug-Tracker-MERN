@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getBugs);
+router.get("/", protect, getBugs);
 router.get("/:id", getABug);
 router.post("/", createBug);
 router.patch("/:id", updateBug);
