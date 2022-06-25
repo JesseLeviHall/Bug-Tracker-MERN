@@ -16,7 +16,6 @@ export default function Dashboard() {
   const bugs = useSelector(selectAllBugs);
   const bugStatus = useSelector(getBugsStatus);
   const error = useSelector(getBugsError);
-  const history = useNavigate();
 
   let content;
   let highCount = 0;
@@ -33,35 +32,19 @@ export default function Dashboard() {
       <div style={{ height: "100vh" }}>
         <Row>
           <Col className="mt-5" md="4">
-            <DashboardItem
-              clicked={redirect}
-              priority="1"
-              count={highCount.length}
-            />
+            <DashboardItem priority="1" count={highCount.length} />
           </Col>
           <Col className="mt-5" md="4">
-            <DashboardItem
-              clicked={redirect}
-              priority="2"
-              count={midCount.length}
-            />
+            <DashboardItem priority="2" count={midCount.length} />
           </Col>
           <Col className="mt-5" md="4">
-            <DashboardItem
-              clicked={redirect}
-              priority="3"
-              count={lowCount.length}
-            />
+            <DashboardItem priority="3" count={lowCount.length} />
           </Col>
         </Row>
       </div>
     );
   } else if (bugStatus === "failed") {
     content = <p>{error}</p>;
-  }
-
-  function redirect() {
-    history("/viewbugs");
   }
 
   function filterBugs(priority) {

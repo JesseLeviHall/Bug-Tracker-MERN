@@ -25,6 +25,14 @@ export default function MyBugs() {
 
   const myBugs = bugs.filter((bug) => bug.assigned === user.userName);
 
+  if (myBugs.length === 0) {
+    return (
+      <h2 style={{ color: "#fff" }} className="text-center mt-5">
+        There are no bugs assigned for you to work on right now, nice!
+      </h2>
+    );
+  }
+
   let content;
   if (bugStatus === "loading") {
     content = <p className="text-center mt-5"> Loading...</p>;

@@ -1,6 +1,6 @@
 import React from "react";
 import Priority from "../../../Controllers/priorityController";
-import { Card, CardTitle, CardText, Button } from "reactstrap";
+import { Card, CardTitle, CardText } from "reactstrap";
 
 export default function DashboardItem(props) {
   const { level, color } = Priority(props.priority);
@@ -11,13 +11,6 @@ export default function DashboardItem(props) {
       </CardTitle>
       <CardText className="text-center justify-content-center p-3">
         Bug Count: {props.count} <br />
-        <Button
-          color="info"
-          className="col-4 mt-3"
-          size="sm"
-          onClick={props.clicked}>
-          View
-        </Button>
       </CardText>
     </Card>
   );
