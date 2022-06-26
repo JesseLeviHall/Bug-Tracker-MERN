@@ -2,8 +2,17 @@ import axios from "axios";
 
 const API = axios.create({ baseURL: "http://localhost:3500" });
 
-//Bugs
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("user")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("user")).token
+    }`;
+  }
 
+  return req;
+});
+
+//Bugs
 export const fetchBugs = async () => {
   const response = await API.get("/viewbugs");
   return response.data;

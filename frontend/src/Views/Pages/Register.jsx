@@ -55,7 +55,7 @@ export default function Register() {
   };
 
   return (
-    <div className="container-as body">
+    <div className="container-fluid full-width" style={{ height: "100vh" }}>
       <Navbar>
         {" "}
         <FontAwesomeIcon icon={faBug} className="mr-2" />

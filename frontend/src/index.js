@@ -8,13 +8,11 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 //reducers
 import authReducer from "./Controllers/Reducers/authSlice.js";
 import bugReducer from "./Controllers/Reducers/bugSlice.js";
-import userReducer from "./Controllers/Reducers/userSlice.js";
 
 //redux configure
 const reducer = combineReducers({
   auth: authReducer,
   bugs: bugReducer,
-  user: userReducer,
 });
 
 const store = configureStore({

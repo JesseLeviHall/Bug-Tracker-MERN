@@ -11,9 +11,9 @@ import {
 const router = express.Router();
 
 router.get("/", protect, getBugs);
-router.get("/:id", getABug);
-router.post("/", createBug);
-router.patch("/:id", updateBug);
-router.delete("/:id", deleteBug);
+router.get("/:id", protect, getABug);
+router.post("/", protect, createBug);
+router.patch("/:id", protect, updateBug);
+router.delete("/:id", protect, deleteBug);
 
 export default router;

@@ -17,7 +17,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { login, reset } from "../../../Controllers/Reducers/authSlice";
+import { login } from "../../../Controllers/Reducers/authSlice";
 import "./login.css";
 
 export default function Login() {
@@ -57,24 +57,6 @@ export default function Login() {
       console.log("failed to sign in", error);
     }
   };
-
-  /* const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-
-    try {
-      dispatch({ type: AUTH, data: { result, token } });
-
-      history("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-
-  const googleError = (error) =>
-    console.log(error, "Google Sign In was unsuccessful.");
-    */
 
   return (
     <div className="container-fluid full-width" style={{ height: "100vh" }}>

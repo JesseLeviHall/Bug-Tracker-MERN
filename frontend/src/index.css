@@ -2,11 +2,26 @@
 @import url('https: //fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet');
 
 #root{
+  
+    background: linear-gradient(#141e30, #243b55);
 
   --font-family: 'Manrope',
   sans-serif;
   
-  --card-color: linear-gradient(89.97deg, #f2eef7 1.84%, #ffd891 102.67%);
+  --card-color: linear-gradient(89.97deg, #fbc1c179 1.84%, #f1e3e3b6 102.67%) ;
+}
+
+.card {
+  background: var(--card-color);
+  
+}
+
+
+
+.card-body {
+  background: linear-gradient(#141e30, #243b55);
+  border-radius: 1px;
+
 }
 
 button{

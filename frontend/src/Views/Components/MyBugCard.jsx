@@ -71,7 +71,9 @@ export default function bugCard(props) {
                 type="checkbox"
                 onClick={onMarkComplete}
               />
-              <Label for="complete">Mark Complete</Label>
+              <Label style={{ color: "whitesmoke" }} for="complete">
+                Mark Complete
+              </Label>
             </FormGroup>
           </Form>
         </CardBody>
