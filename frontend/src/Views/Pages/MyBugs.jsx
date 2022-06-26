@@ -27,7 +27,7 @@ export default function MyBugs() {
 
   if (myBugs.length === 0) {
     return (
-      <div className="container-sm">
+      <div className="container-fluid">
         <Navigation />
         <h2
           style={{ height: "100vh", color: "#fff" }}

@@ -13,7 +13,7 @@ import Thankyou from "./Views/Pages/PublicForm/Thankyou";
 
 function App() {
   return (
-    <div className="container-fluid full-width ">
+    <div className="container-fluid">
       <Router>
         <Routes>
           <Route path="/publicform" exact element={<PublicForm />} />
