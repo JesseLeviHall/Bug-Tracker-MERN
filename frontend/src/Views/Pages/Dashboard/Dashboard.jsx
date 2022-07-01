@@ -42,7 +42,7 @@ export default function Dashboard() {
           </Col>
         </Row>
         <Row>
-          <Col className="mt-5" md="4">
+          <Col className="mt-5" md="6">
             <Pie id="chart-pie" legendVisiblity height="full" />
           </Col>
         </Row>
