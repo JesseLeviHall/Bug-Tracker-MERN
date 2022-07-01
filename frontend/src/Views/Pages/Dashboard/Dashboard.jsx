@@ -43,7 +43,7 @@ export default function Dashboard() {
         </Row>
         <Row>
           <Col className="mt-5" md="6">
-            <Pie id="chart-pie" legendVisiblity height="full" />
+            <Pie legendVisiblity height="full" />
           </Col>
         </Row>
       </div>
