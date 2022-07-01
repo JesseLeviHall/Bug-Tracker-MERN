@@ -14,10 +14,24 @@ import {
 
 const Pie = (legendVisiblity) => {
   const bugs = useSelector(selectAllBugs);
+
+  const pieChartData = [
+    {
+      x: "Resolved",
+      y: 18,
+      text: "Resolved",
+    },
+    {
+      x: "Pending",
+      y: 8,
+      text: "Pending",
+    },
+  ];
+
   return (
     <AccumulationChartComponent
       id={bugs.id}
-      legendSettings={{ visible: legendVisiblity, background: "transparent" }}
+      legendSettings={{ visible: legendVisiblity, background: "white" }}
       height="full"
       tooltip={{ enable: true }}>
       <Inject
@@ -31,7 +45,7 @@ const Pie = (legendVisiblity) => {
       <AccumulationSeriesCollectionDirective>
         <AccumulationSeriesDirective
           name="Sale"
-          dataSource={bugs}
+          dataSource={pieChartData}
           xName="x"
           yName="y"
           innerRadius="40%"
@@ -47,7 +61,7 @@ const Pie = (legendVisiblity) => {
             position: "Inside",
             font: {
               fontWeight: "600",
-              color: "#fff",
+              color: "yellow",
             },
           }}
         />
