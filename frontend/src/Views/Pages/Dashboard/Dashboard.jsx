@@ -9,6 +9,7 @@ import {
   getBugsStatus,
   selectAllBugs,
 } from "../../../Controllers/Reducers/bugSlice";
+import Pie from "../../Components/Charts/Pie";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -38,6 +39,11 @@ export default function Dashboard() {
           </Col>
           <Col className="mt-5" md="4">
             <DashboardItem priority="3" count={lowCount.length} />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mt-5" md="4">
+            <Pie id="chart-pie" legendVisiblity height="full" />
           </Col>
         </Row>
       </div>
