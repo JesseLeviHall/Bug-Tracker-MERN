@@ -9,7 +9,9 @@ import authReducer from "./Controllers/Reducers/authSlice.js";
 import bugReducer from "./Controllers/Reducers/bugSlice.js";
 import { registerLicense } from "@syncfusion/ej2-base";
 
-registerLicense(process.env.SYNCFUSION_LICENSE);
+registerLicense(
+  "ORg4AjUWIQA/Gnt2VVhiQlFadVlJWnxKf0x0RWFbb1h6cFVMYlRBJAtUQF1hS35UdkdiWn9ccnJRRWZf"
+);
 
 const reducer = combineReducers({
   auth: authReducer,

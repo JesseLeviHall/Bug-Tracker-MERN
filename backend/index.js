@@ -14,6 +14,10 @@ app.use(cors());
 app.use("/viewbugs", viewBugs);
 app.use("/user", userRouter);
 
+app.get("/", (req, res) => {
+  res.send("APP IS RUNNING");
+});
+
 const PORT = process.env.PORT || 3500;
 
 mongoose
