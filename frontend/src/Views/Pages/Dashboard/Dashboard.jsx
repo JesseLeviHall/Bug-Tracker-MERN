@@ -10,6 +10,7 @@ import {
   selectAllBugs,
 } from "../../../Controllers/Reducers/bugSlice";
 import Pie from "../../Components/Charts/Pie";
+import LineChart from "../../Components/Charts/Line";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ export default function Dashboard() {
         <Row>
           <Col className="mt-5" md="6">
             <Pie legendVisiblity height="full" />
+          </Col>
+          <Col className="mt-5" md="6">
+            <LineChart />
           </Col>
         </Row>
       </div>
