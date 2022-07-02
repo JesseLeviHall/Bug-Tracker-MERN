@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-//reducers
 import authReducer from "./Controllers/Reducers/authSlice.js";
 import bugReducer from "./Controllers/Reducers/bugSlice.js";
+import { registerLicense } from "@syncfusion/ej2-base";
 
-//redux configure
+registerLicense(process.env.SYNCFUSION_LICENSE);
+
 const reducer = combineReducers({
   auth: authReducer,
   bugs: bugReducer,

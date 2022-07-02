@@ -11,6 +11,7 @@ import {
 } from "../../../Controllers/Reducers/bugSlice";
 import Pie from "../../Components/Charts/Pie";
 import LineChart from "../../Components/Charts/Line";
+import Bar from "../../Components/Charts/Bar";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export default function Dashboard() {
     midCount = filterBugs(2);
     lowCount = filterBugs(3);
     content = (
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "inherit" }}>
         <Row>
           <Col className="mt-5" md="4">
             <DashboardItem priority="1" count={highCount.length} />
@@ -49,6 +50,16 @@ export default function Dashboard() {
           <Col className="mt-5" md="6">
             <LineChart />
           </Col>
+        </Row>
+        <Row>
+          <Col className="mt-5" md="12">
+            <Bar />
+          </Col>
+        </Row>
+        <Row>
+          <br />
+          <br />
+          <br />
         </Row>
       </div>
     );
