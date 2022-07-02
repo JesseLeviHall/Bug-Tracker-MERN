@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectAllBugs } from "../../../Controllers/Reducers/bugSlice";
+import moment from "moment";
 import {
   ChartComponent,
   SeriesCollectionDirective,
@@ -12,24 +13,48 @@ import {
   Tooltip,
 } from "@syncfusion/ej2-react-charts";
 
-//import {lineCustomSeries,LinePrimaryXAxis,LinePrimaryYAxis,
-//} from "../../data/dummy";
-
 const LineChart = () => {
   const bugs = useSelector(selectAllBugs);
 
+  function filterByCreatedDateLastMonth(bugs) {
+    const todaysDate = new Date();
+    const startDayOfPrevMonth = moment(todaysDate)
+      .subtract(1, "month")
+      .startOf("month")
+      .format("LLLL");
+    const lastDayOfPrevMonth = moment(todaysDate)
+      .subtract(1, "month")
+      .endOf("month")
+      .format("LLLL");
+
+    bugs.filter((month) => {
+      const createdDate = month.time;
+      return moment(createdDate).isBetween(
+        startDayOfPrevMonth,
+        lastDayOfPrevMonth
+      );
+    });
+  }
+
+  console.log(filterByCreatedDateLastMonth());
+
+  const date = bugs.map((bug) => [moment(bug.time).format("YYYY, DD, MM")]);
+  const bugCount = date.length;
+
   const lineChartData = [
     [
-      { x: new Date(2005, 0, 1), y: 21 },
-      { x: new Date(2006, 0, 1), y: 24 },
-      { x: new Date(2007, 0, 1), y: 36 },
-      { x: new Date(2008, 0, 1), y: 38 },
-      { x: new Date(2009, 0, 1), y: 54 },
-      { x: new Date(2010, 0, 1), y: 57 },
-      { x: new Date(2011, 0, 1), y: 70 },
+      { x: `${date[0]}`, y: bugCount },
+      { x: `${date[1]}`, y: bugCount },
+      { x: `${date[2]}`, y: bugCount },
+      { x: `${date[3]}`, y: bugCount },
+      { x: `${date[4]}`, y: bugCount },
+      { x: `${date[5]}`, y: bugCount },
+      { x: `${date[6]}`, y: bugCount },
+      { x: `${date[7]}`, y: bugCount },
     ],
   ];
 
+  console.log(lineChartData);
   const lineCustomSeries = [
     {
       dataSource: lineChartData[0],
