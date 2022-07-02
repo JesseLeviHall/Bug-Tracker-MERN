@@ -17,7 +17,6 @@ const LineChart = () => {
   const bugs = useSelector(selectAllBugs);
 
   const date = bugs.map((bug) => [moment(bug.time).format("YYYY, DD, MM")]);
-  const bugCount = date.length;
 
   const lineChartData = [
     [
@@ -32,7 +31,6 @@ const LineChart = () => {
     ],
   ];
 
-  console.log(lineChartData);
   const lineCustomSeries = [
     {
       dataSource: lineChartData[0],

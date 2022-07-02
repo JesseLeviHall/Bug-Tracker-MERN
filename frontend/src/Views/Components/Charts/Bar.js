@@ -15,36 +15,14 @@ import {
 
 const Bar = () => {
   const bugs = useSelector(selectAllBugs);
-
-  const barPrimaryXAxis = {
-    valueType: "Category",
-    interval: 1,
-    majorGridLines: { width: 0 },
-  };
-
-  const barPrimaryYAxis = {
-    majorGridLines: { width: 0 },
-    majorTickLines: { width: 0 },
-    lineStyle: { width: 0 },
-    labelStyle: { color: "transparent" },
-  };
+  const blog = bugs.filter((bug) => bug.webpage === "Blog");
+  const commerce = bugs.filter((bug) => bug.webpage === "Checkout Page");
+  const auth = bugs.filter((bug) => bug.webpage === "Login");
 
   const barChartData = [
-    [
-      { x: "USA", y: 46 },
-      { x: "GBR", y: 27 },
-      { x: "CHN", y: 26 },
-    ],
-    [
-      { x: "USA", y: 37 },
-      { x: "GBR", y: 23 },
-      { x: "CHN", y: 18 },
-    ],
-    [
-      { x: "USA", y: 38 },
-      { x: "GBR", y: 17 },
-      { x: "CHN", y: 26 },
-    ],
+    [{ x: "BLOG", y: blog.length }],
+    [{ x: "ECOMMERCE", y: commerce.length }],
+    [{ x: "AUTHENTICATION", y: auth.length }],
   ];
 
   const barCustomSeries = [
@@ -52,7 +30,7 @@ const Bar = () => {
       dataSource: barChartData[0],
       xName: "x",
       yName: "y",
-      name: "Gold",
+      name: "Blog",
       type: "Column",
       marker: {
         dataLabel: {
@@ -66,7 +44,7 @@ const Bar = () => {
       dataSource: barChartData[1],
       xName: "x",
       yName: "y",
-      name: "Silver",
+      name: "Ecomm",
       type: "Column",
       marker: {
         dataLabel: {
@@ -80,7 +58,7 @@ const Bar = () => {
       dataSource: barChartData[2],
       xName: "x",
       yName: "y",
-      name: "Bronze",
+      name: "Auth",
       type: "Column",
       marker: {
         dataLabel: {
@@ -91,6 +69,19 @@ const Bar = () => {
       },
     },
   ];
+
+  const barPrimaryXAxis = {
+    valueType: "Category",
+    interval: 1,
+    majorGridLines: { width: 0 },
+  };
+
+  const barPrimaryYAxis = {
+    majorGridLines: { width: 0 },
+    majorTickLines: { width: 0 },
+    lineStyle: { width: 0 },
+    labelStyle: { color: "transparent" },
+  };
 
   return (
     <ChartComponent
