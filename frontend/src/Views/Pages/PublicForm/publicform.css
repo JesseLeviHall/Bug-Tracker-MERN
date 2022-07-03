@@ -1,8 +1,9 @@
 #container {
-  height: 100vh;
+  height: 1600px;
   margin:0;
   padding:0;
 }
+
 
 #message-container {
   min-height: 50vh;
