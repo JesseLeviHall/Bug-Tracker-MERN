@@ -101,6 +101,7 @@ export const signup = async (req, res) => {
 
 ### JavaScript/React.js
 
+```
 export default function Dashboard() {
 const dispatch = useDispatch();
 const bugs = useSelector(selectAllBugs);
@@ -194,4 +195,7 @@ Through building other projects the problems from user feedback was by word of m
 
 Created by [Jesse Hall](https://www.linkedin.com/in/jessehall/)
 Feel free to contact me for any questions!
+
+```
+
 ```
