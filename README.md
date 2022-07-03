@@ -23,7 +23,7 @@ This bug tracker is an easy-to-use web application useful in order to capture an
 <img src="./capture.png">
 </kbd>
 </div>
-
+<div align="center">Public Feedback Form: </div>
 <br/>
 <div align="center">
 <kbd>
