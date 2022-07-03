@@ -14,7 +14,7 @@
 
 ## General info
 
-This bug tracker is an easy-to-use web application useful to capture and track public feedback concerning problems encountered on websites. It provides a way to manage bugs for any medium or small scale team managing multiple websites. This is a unique site that also integrates data charts to better visualize team and tech stack performances.
+This bug tracker is an easy-to-use web application useful in order to capture and track public feedback concerning problems encountered on websites. It provides a way to manage bugs for any medium or small scale team managing multiple websites. This is a unique site that also integrates data charts to better visualize team and tech stack performances.
 
 <div align="center">Home Page and Dashboard: </div>
 <br/>
@@ -97,78 +97,78 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
-
+```
 
 ### JavaScript/React.js
+
 export default function Dashboard() {
-  const dispatch = useDispatch();
-  const bugs = useSelector(selectAllBugs);
-  const bugStatus = useSelector(getBugsStatus);
-  const error = useSelector(getBugsError);
+const dispatch = useDispatch();
+const bugs = useSelector(selectAllBugs);
+const bugStatus = useSelector(getBugsStatus);
+const error = useSelector(getBugsError);
 
-  let content;
-  let highCount = 0;
-  let midCount = 0;
-  let lowCount = 0;
+let content;
+let highCount = 0;
+let midCount = 0;
+let lowCount = 0;
 
-  if (bugStatus === "loading") {
-    content = <p className="m-5 text-center"> Loading........</p>;
-  } else if (bugStatus === "succeeded") {
-    highCount = filterBugs(1);
-    midCount = filterBugs(2);
-    lowCount = filterBugs(3);
-    content = (
-      <div style={{ height: "inherit" }}>
-        <Row>
-          <Col className="mt-5" md="4">
-            <DashboardItem priority="1" count={highCount.length} />
-          </Col>
-          <Col className="mt-5" md="4">
-            <DashboardItem priority="2" count={midCount.length} />
-          </Col>
-          <Col className="mt-5" md="4">
-            <DashboardItem priority="3" count={lowCount.length} />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="mt-5" md="6">
-            <Pie legendVisiblity height="full" />
-          </Col>
-          <Col className="mt-5" md="6">
-            <LineChart />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="mt-5" md="12">
-            <Bar />
-          </Col>
-        </Row>
-      </div>
-    );
-  } else if (bugStatus === "failed") {
-    content = <p>{error}</p>;
-  }
-
-  function filterBugs(priority) {
-    return bugs.filter((bug) => {
-      return bug.priority === priority && bug.complete === false;
-    });
-  }
-
-  useEffect(() => {
-    if (bugStatus === "idle") {
-      dispatch(fetchBugs());
-    }
-  }, [bugStatus, dispatch]);
-
-  return (
-    <div className="container-sm">
-      <Navigation />
-      {content}
-    </div>
-  );
+if (bugStatus === "loading") {
+content = <p className="m-5 text-center"> Loading........</p>;
+} else if (bugStatus === "succeeded") {
+highCount = filterBugs(1);
+midCount = filterBugs(2);
+lowCount = filterBugs(3);
+content = (
+<div style={{ height: "inherit" }}>
+<Row>
+<Col className="mt-5" md="4">
+<DashboardItem priority="1" count={highCount.length} />
+</Col>
+<Col className="mt-5" md="4">
+<DashboardItem priority="2" count={midCount.length} />
+</Col>
+<Col className="mt-5" md="4">
+<DashboardItem priority="3" count={lowCount.length} />
+</Col>
+</Row>
+<Row>
+<Col className="mt-5" md="6">
+<Pie legendVisiblity height="full" />
+</Col>
+<Col className="mt-5" md="6">
+<LineChart />
+</Col>
+</Row>
+<Row>
+<Col className="mt-5" md="12">
+<Bar />
+</Col>
+</Row>
+</div>
+);
+} else if (bugStatus === "failed") {
+content = <p>{error}</p>;
 }
 
+function filterBugs(priority) {
+return bugs.filter((bug) => {
+return bug.priority === priority && bug.complete === false;
+});
+}
+
+useEffect(() => {
+if (bugStatus === "idle") {
+dispatch(fetchBugs());
+}
+}, [bugStatus, dispatch]);
+
+return (
+<div className="container-sm">
+<Navigation />
+{content}
+</div>
+);
+}
 
 ```
 
@@ -194,3 +194,4 @@ Through building other projects the problems from user feedback was by word of m
 
 Created by [Jesse Hall](https://www.linkedin.com/in/jessehall/)
 Feel free to contact me for any questions!
+```
