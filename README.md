@@ -5,14 +5,12 @@
 ## Table of contents
 
 - [General info](#general-info)
-- [Project Demo](#project-demo)
+- [Live Site](#project-demo)
 - [Project Video](#project-video)
 - [Technologies](#technologies)
-- [Setup](#setup)
 - [Features](#features)
 - [Inspiration](#inspiration)
 - [Contact](#contact)
-- [License](#license)
 
 ## General info
 
@@ -144,11 +142,6 @@ export default function Dashboard() {
           <Col className="mt-5" md="12">
             <Bar />
           </Col>
-        </Row>
-        <Row>
-          <br />
-          <br />
-          <br />
         </Row>
       </div>
     );
