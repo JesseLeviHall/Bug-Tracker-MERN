@@ -33,7 +33,7 @@ This bug tracker is an easy-to-use web application useful in order to capture an
 
 ## Project Demo
 
-[Click to view live site](https://62c0e4867a230424c86e3178--bug-tracker-mern-app.netlify.app/user/login)
+[Click to view live site](https://62c1be1a7a230426936e3163--bug-tracker-mern-app.netlify.app/user/login)
 
 ## Project Video
 

@@ -5,7 +5,7 @@ import { Row, Card, CardHeader, CardFooter, CardText } from "reactstrap";
 const Thankyou = () => {
   return (
     <div id="container" className="container-fluid">
-      <Row className="m-5">
+      <Row className="mx-5">
         <Card color="info" outline id="card2">
           <CardHeader id="cardheader" tag="h4">
             Thank You
