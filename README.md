@@ -179,13 +179,13 @@ return (
 - A Public Form to link into any website to provide clients with an option to report a problem they encountered.
 - Authorization and authenication implemented with JWT and bcrypt. Custom hook to protect front end routes and re-direct to login.
 - Front-End css styles and chart components built with Syncfusion components.
-- View and analyze ticket data through charts that includes: Ticket Priority Count, Pending/Completed Tickets, Frequency of Tickets Posted over the current year, the bug count per website.
-- Users can create an account through application. Users can submit new bugs, and mark complete those that have been assigned to them by the admin account.
-- The admin account can edit and delete tickets and assign them to the users where they will find them in the mybugs page.
+- View and analyze Bug data through charts that include: Unresolved Bug Priority Count, Pending/Completed Bugs, Frequency of Bugs Posted over the current year, the Bug count per website.
+- Users can create an account through the application. Users can submit new Bugs, and mark complete those that have been assigned to them by the admin account.
+- The admin account can edit and delete Bugs and assign them to the users where they will then find them in the mybugs page.
 
 ## Status
 
-Project is: Deployed, and in use by the creator. Public use repo as needed.
+The project is deployed and in use by the creator. Public may use repo as needed.
 
 ## Inspiration
 
