@@ -64,7 +64,7 @@ This bug tracker is an easy-to-use web application useful in order to capture an
 ### Node.js/Express.js
 
 ```Node
-export const signup = async (req, res) => {
+export const signUp = async (req, res) => {
   const { firstName, lastName, userName, password } = req.body;
 
   try {
