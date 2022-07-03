@@ -1,6 +1,6 @@
 # Bug Tracker Web App
 
-> Bug tracking tool for every day use.
+In-house developement agency tool to keep track of website issues from client feedback
 
 ## Table of contents
 
