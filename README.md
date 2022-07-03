@@ -179,7 +179,7 @@ return (
 - Full stack web application utilizing MongoDB, Express.js, React, and Node.js with state mangagement using redux-toolkit.
 - A Public Form to link into any website to provide clients with an option to report a problem they encountered.
 - Authorization and authenication implemented with JWT and bcrypt. Custom hook to protect front end routes and re-direct to login.
-- Front-End css styles and chart components built with Syncfusion components.
+- Front-End css styles with button hover light-up animation, chart components built with Syncfusion components.
 - View and analyze Bug data through charts that include: Unresolved Bug Priority Count, Pending/Completed Bugs, Frequency of Bugs Posted over the current year, the Bug count per website.
 - Users can create an account through the application. Users can submit new Bugs, and mark complete those that have been assigned to them by the admin account.
 - The admin account can edit and delete Bugs and assign them to the users where they will then find them in the mybugs page.
