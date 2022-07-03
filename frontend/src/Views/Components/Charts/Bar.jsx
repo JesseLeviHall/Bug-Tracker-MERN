@@ -16,13 +16,13 @@ import {
 const Bar = () => {
   const bugs = useSelector(selectAllBugs);
   const blog = bugs.filter((bug) => bug.webpage === "Blog");
-  const commerce = bugs.filter((bug) => bug.webpage === "Checkout Page");
+  const commerce = bugs.filter((bug) => bug.webpage === "Shop");
   const auth = bugs.filter((bug) => bug.webpage === "Login");
 
   const barChartData = [
     [{ x: "BLOG", y: blog.length }],
     [{ x: "ECOMMERCE", y: commerce.length }],
-    [{ x: "AUTHENTICATION", y: auth.length }],
+    [{ x: "USER DATA", y: auth.length }],
   ];
 
   const barCustomSeries = [

@@ -71,3 +71,5 @@ const generateToken = (id) => {
     expiresIn: "8h",
   });
 };
+
+export default User;

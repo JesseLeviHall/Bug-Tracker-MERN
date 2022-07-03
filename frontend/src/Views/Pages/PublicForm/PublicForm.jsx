@@ -56,7 +56,10 @@ const PublicForm = () => {
   };
 
   return (
-    <div id="container" className="container-fluid">
+    <div
+      id="container"
+      style={{ height: "inherit" }}
+      className="container-fluid">
       <Row>
         <h1 id="h1" className="mt-5">
           Did You Experience A Website Issue?
