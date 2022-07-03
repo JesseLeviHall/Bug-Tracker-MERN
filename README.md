@@ -175,7 +175,7 @@ return (
 
 ## Features
 
-- Full stack web application utilizing MongoDB, Express.js, React, and Node.js.
+- Full stack web application utilizing MongoDB, Express.js, React, and Node.js with state mangagement using redux-toolkit.
 - A Public Form to link into any website to provide clients with an option to report a problem they encountered.
 - Authorization and authenication implemented with JWT and bcrypt. Custom hook to protect front end routes and re-direct to login.
 - Front-End css styles and chart components built with Syncfusion components.
