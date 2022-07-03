@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/", protect, getBugs);
 router.get("/:id", protect, getABug);
-router.post("/", protect, createBug);
+router.post("/", createBug);
 router.patch("/:id", protect, updateBug);
 router.delete("/:id", protect, deleteBug);
 
