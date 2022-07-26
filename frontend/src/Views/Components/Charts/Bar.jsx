@@ -1,17 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectAllBugs } from "../../../Controllers/Reducers/bugSlice";
-import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
-  Inject,
-  Legend,
-  Category,
-  Tooltip,
-  ColumnSeries,
-  DataLabel,
-} from "@syncfusion/ej2-react-charts";
 
 const Bar = () => {
   const bugs = useSelector(selectAllBugs);
@@ -83,22 +72,7 @@ const Bar = () => {
     labelStyle: { color: "transparent" },
   };
 
-  return (
-    <ChartComponent
-      primaryXAxis={barPrimaryXAxis}
-      primaryYAxis={barPrimaryYAxis}
-      chartArea={{ border: { width: 0 } }}
-      tooltip={{ enable: true }}
-      background={"#03e9f4"}
-      legendSettings={{ background: "#d5c1fb79" }}>
-      <Inject services={[ColumnSeries, Legend, Tooltip, Category, DataLabel]} />
-      <SeriesCollectionDirective>
-        {barCustomSeries.map((item, index) => (
-          <SeriesDirective key={index} {...item} />
-        ))}
-      </SeriesCollectionDirective>
-    </ChartComponent>
-  );
+  return <div></div>;
 };
 
 export default Bar;

@@ -2,16 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectAllBugs } from "../../../Controllers/Reducers/bugSlice";
 import moment from "moment";
-import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
-  Inject,
-  LineSeries,
-  DateTime,
-  Legend,
-  Tooltip,
-} from "@syncfusion/ej2-react-charts";
 
 const LineChart = () => {
   const bugs = useSelector(selectAllBugs);
@@ -63,23 +53,7 @@ const LineChart = () => {
     minorTickLines: { width: 0 },
   };
 
-  return (
-    <ChartComponent
-      height="420px"
-      primaryXAxis={LinePrimaryXAxis}
-      primaryYAxis={LinePrimaryYAxis}
-      chartArea={{ border: { width: 0 } }}
-      tooltip={{ enable: true }}
-      background={"#03e9f4"}
-      legendSettings={{ background: "#d5c1fb79" }}>
-      <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
-      <SeriesCollectionDirective>
-        {lineCustomSeries.map((item, index) => (
-          <SeriesDirective key={index} {...item} />
-        ))}
-      </SeriesCollectionDirective>
-    </ChartComponent>
-  );
+  return <div></div>;
 };
 
 export default LineChart;
