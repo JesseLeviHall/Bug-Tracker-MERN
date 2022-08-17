@@ -38,7 +38,7 @@ This bug tracker is an easy-to-use web application useful in order to capture an
 
 ## Project Video
 
-[Click to view video demo](comming soon)
+(https://youtu.be/3Wd7Y7kmVG0)
 
 ## Technologies
 
